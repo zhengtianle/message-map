@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>留言山威</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <style>
+        html,body,#container{
+            height:100%;
+        }
+        .info hr {
+            margin-right: 0;
+            margin-left: 0;
+            border-top-color: grey;
+        }
+
+        .info {
+            padding: .75rem 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: .25rem;
+            position: fixed;
+            top: 1rem;
+            background-color: white;
+            width: auto;
+            min-width: 22rem;
+            border-width: 0;
+            left: 1rem;
+            right: 90rem;
+            box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
+        }
+        
+        /* 如何把一个控件放到地图的前面显示示例 */
+        #buttonBalloon{
+            padding: .75rem 1.25rem;
+            position: fixed;
+            bottom: 1rem;
+            background-color: black;
+            width: auto;
+            border-width: 0;
+            left: 1rem;
+        }
+    </style>
+
+<body>
+
+    <div id='container'></div>
+    <button type="button" id="buttonBalloon" class="btn btn-large btn-block btn-info">气球标注</button>
+
+    <div class="info">
+        <h4 id='status'></h4>
+        <hr>
+        <p id='result'></p>
+        <hr>
+        <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
+        <hr>
+        <div class="input-item">
+            <div class="input-item-prepend"><span class="input-item-text">经纬度</span></div>
+            <input id='lnglat' type="text" value='单击获取点击处坐标'>
+        </div>
+        <div class="input-item">
+            <div class="input-item-prepend"><span class="input-item-text">地址</span></div>
+            <input id='address' type="text" disabled>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=cdee547667e2ebbf9674c9ec33c61bd7"></script>
+    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <!-- 谷歌jquery的cdn链接 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/balloon.js"></script>
+    <script src="../js/pointLnglat.js"></script>
+    <script src="../js/location.js"></script>
+    <script type="text/javascript">
+        //初始化地图对象，加载地图
+        var map = new AMap.Map('container', {
+            resizeEnable: true,
+            //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
+            pitch: 60, //3D视图视角
+            viewMode: '3D',
+            zooms: [3, 18], //地图显示的缩放级别范围
+            zoom: 10,
+            expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
+            showBuildingBlock: true //设置地图显示3D楼块效果
+        });
+
+        //加载定位和罗盘插件
+        plugins(map);
+        //地图气球
+        var object3Dlayer = balloon(map);
+        var hasBalloon = false;
+        //给气球标注按钮添加点击事件
+        $("#buttonBalloon").click(function() {
+            if (hasBalloon) {
+                map.remove(object3Dlayer);
+            } else {
+                map.add(object3Dlayer);
+            }
+            hasBalloon = !hasBalloon;
+        });
+
+
+        /**
+         * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
+         * 或者 map.getBounds() 获得地图Bounds信息
+         */
+        var mybounds = new AMap.Bounds([122.050482, 37.525571], [122.066082, 37.541141]);
+        map.setLimitBounds(mybounds);
+    </script>
+</body>
+
+</html>
