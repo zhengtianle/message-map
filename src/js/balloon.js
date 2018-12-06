@@ -53,11 +53,3 @@ function balloon(map) {
 
     return object3Dlayer;
 }
-
-//坐标转换
-function lnglatToG20(lnglat) {
-    lnglat = map.lngLatToGeodeticCoord(lnglat);
-    lnglat.x = AMap.Util.format(lnglat.x, 3);
-    lnglat.y = AMap.Util.format(lnglat.y, 3);
-    return lnglat;
-}

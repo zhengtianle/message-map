@@ -6,11 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
     <title>留言山威</title>
-    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+    <link type="text/css" rel="stylesheet" href="../css/menu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/font-awesome.css" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link type="text/css" rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
     <style>
         html,body,#container{
+            overflow:-Scroll;overflow-y:hidden;
             height:100%;
+            margin: 0;
         }
+
+        .amap-copyright{
+            box-sizing: content-box
+        }
+        *{
+            box-sizing: border-box
+        }
+
         .info hr {
             margin-right: 0;
             margin-left: 0;
@@ -18,98 +32,240 @@
         }
 
         .info {
-            padding: .75rem 1.25rem;
-            margin-bottom: 1rem;
-            border-radius: .25rem;
             position: fixed;
-            top: 1rem;
-            background-color: white;
-            width: auto;
-            min-width: 22rem;
-            border-width: 0;
+            width: 30rem;
+            top:50rem;
             left: 1rem;
             right: 90rem;
-            box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
         }
         
         /* 如何把一个控件放到地图的前面显示示例 */
         #buttonBalloon{
-            padding: .75rem 1.25rem;
+            margin: auto;
             position: fixed;
             bottom: 1rem;
-            background-color: black;
             width: auto;
             border-width: 0;
-            left: 1rem;
+            left: 50%;
         }
+
+        /* 菜单 */
+        /* * {
+			box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+		} */
+
+		#munu {
+            background: #f0f0f0;
+		}
+
+		.content {
+            width: 280px;
+            position: fixed;
+            top: 0rem;
+            left: 1rem;
+            right: 90rem;
+            box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
+		} 
+
+		#filterinput {
+			background-color: rgba(249, 244, 244, 0) !important;
+			border-radius: 15px !important;
+			width: 92% !important;
+			height: 30px !important;
+			border: thin solid #FFF !important;
+			text-indent: 0.5em !important;
+			font-weight: bold !important;
+			color: #FFF !important;
+		}
+
+		#demo-list a {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 100%;
+        }
+
+        
+        
+
+
+
     </style>
 
 <body>
 
     <div id='container'></div>
-    <button type="button" id="buttonBalloon" class="btn btn-large btn-block btn-info">气球标注</button>
+    <button type="button" id="buttonBalloon" class="btn btn-large btn-block btn-danger">气球标注</button>
 
     <div class="info">
-        <h4 id='status'></h4>
-        <hr>
-        <p id='result'></p>
-        <hr>
-        <p>由于众多浏览器已不再支持非安全域的定位请求，为保位成功率和精度，请升级您的站点到HTTPS。</p>
-        <hr>
-        <div class="input-item">
-            <div class="input-item-prepend"><span class="input-item-text">经纬度</span></div>
-            <input id='lnglat' type="text" value='单击获取点击处坐标'>
+        <div class="input-group">
+            <div class="input-group-addon">经纬度</div>
+            <input type="text" class="form-control" id='lnglat' placeholder="单击获取经纬度" disabled>
         </div>
-        <div class="input-item">
-            <div class="input-item-prepend"><span class="input-item-text">地址</span></div>
-            <input id='address' type="text" disabled>
+        <div class="input-group">
+            <div class="input-group-addon">地址</div>
+            <input type="text" class="form-control" id='address' placeholder="对应的地址" disabled>
         </div>
+        
+    </div>
+
+
+    <!-- 侧边栏菜单，包括搜索，个人中心的入口等等 -->
+    <div class="content">
+
+        <div id="jquery-accordion-menu" class="jquery-accordion-menu red">
+            <div class="jquery-accordion-menu-header" id="form">
+                <form class="filterform" action="#">
+                    <input id="filterinput" type="text">
+                </form>
+            </div>
+            <ul id="demo-list">
+
+                <!-- <i class="fa fa-home"></i> -->
+                <li class="active"><a href="#"><img src="../images/avatar.jpg" style="width: 20%; float: left;" class="img-responsive img-circle" alt="Image">&nbsp;&nbsp;&nbsp;&nbsp;这里显示用户名<br />&nbsp;&nbsp;&nbsp;&nbsp;这里显示留言数</a></li>
+                <li><a href="#"><i class="fa fa-file-image-o"></i>Gallery </a><span class="jquery-accordion-menu-label">
+                        12 </span></li>
+                <li><a href="#"><i class="fa fa-cog"></i>Services </a>
+                    <ul class="submenu">
+                        <li><a href="#">Web Design </a></li>
+                        <li><a href="#">Hosting </a></li>
+                        <li><a href="#">Design </a>
+                            <ul class="submenu">
+                                <li><a href="#">Graphics </a></li>
+                                <li><a href="#">Vectors </a></li>
+                                <li><a href="#">Photoshop </a></li>
+                                <li><a href="#">Fonts </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Consulting </a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-home"></i>系统管理 </a></li>
+                <li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>
+                    <ul class="submenu">
+                        <li><a href="#">Web Design </a></li>
+                        <li><a href="#">Graphics </a><span class="jquery-accordion-menu-label">10 </span>
+                        </li>
+                        <li><a href="#">Photoshop </a></li>
+                        <li><a href="#">Programming </a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-user"></i>About </a></li>
+
+            </ul>
+            <div class="jquery-accordion-menu-footer">
+                Footer
+            </div>
+
+        </div>
+
     </div>
 
 
 
+
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=cdee547667e2ebbf9674c9ec33c61bd7"></script>
-    <script src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <script type="text/javascript" src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
     <!-- 谷歌jquery的cdn链接 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../js/balloon.js"></script>
-    <script src="../js/pointLnglat.js"></script>
-    <script src="../js/location.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/balloon.js"></script>
+    <script type="text/javascript" src="../js/pointLnglat.js"></script>
+    <script type="text/javascript" src="../js/plugins.js"></script>
+    <script type="text/javascript" src="../js/menu.js"></script>
     <script type="text/javascript">
-        //初始化地图对象，加载地图
-        var map = new AMap.Map('container', {
-            resizeEnable: true,
-            //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
-            pitch: 60, //3D视图视角
-            viewMode: '3D',
-            zooms: [3, 18], //地图显示的缩放级别范围
-            zoom: 10,
-            expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
-            showBuildingBlock: true //设置地图显示3D楼块效果
+        $(function () {
+
+            //初始化地图对象，加载地图
+            var map = new AMap.Map('container', {
+                resizeEnable: true,
+                //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
+                pitch: 60, //3D视图视角
+                viewMode: '3D',
+                zooms: [3, 18], //地图显示的缩放级别范围
+                zoom: 10,
+                expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
+                showBuildingBlock: true //设置地图显示3D楼块效果
+            });
+
+            //加载定位和罗盘插件
+            plugins(map);
+            //地图气球
+            var object3Dlayer = balloon(map);
+            var hasBalloon = false;
+            //给气球标注按钮添加点击事件
+            $("#buttonBalloon").click(function () {
+                if (hasBalloon) {
+                    map.remove(object3Dlayer);
+                } else {
+                    map.add(object3Dlayer);
+                }
+                hasBalloon = !hasBalloon;
+            });
+
+
+            /**
+             * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
+             * 或者 map.getBounds() 获得地图Bounds信息
+             */
+            var mybounds = new AMap.Bounds([122.050482, 37.525571], [122.066082, 37.541141]);
+            map.setLimitBounds(mybounds);
+
+
+            /**
+             * 菜单
+             */
+            $(function () {
+                //顶部导航切换
+                $("#demo-list li").click(function () {
+                    $("#demo-list li.active").removeClass("active")
+                    $(this).addClass("active");
+                })
+            });
+
+            /*(function ($) {
+                $.expr[":"].Contains = function (a, i, m) {
+                    return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >=
+                        0;
+                };
+
+                
+                function filterList(header, list) {
+                    //@header 头部元素
+                    //@list 无需列表
+                    //创建一个搜素表单
+                    var form = $("<form>").attr({
+                            "class": "filterform",
+                            action: "#"
+                        }),
+                        input = $("<input>").attr({
+                            "id": "filterinput",
+                            type: "text"
+                        });
+                    $(form).append(input).appendTo(header);
+                    //搜索菜单栏
+                    $(input).change(function () {
+                        var filter = $(this).val();
+                        if (filter) {
+                            $matches = $(list).find("a:Contains(" + filter + ")").parent();
+                            $("li", list).not($matches).slideUp();
+                            $matches.slideDown();
+                        } else {
+                            $(list).find("li").slideDown();
+                        }
+                        return false;
+                    }).keyup(function () {
+                        $(this).change();
+                    });
+                }
+                filterList($("#form"), $("#demo-list"));
+                
+            })(jQuery);*/
+            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+
         });
-
-        //加载定位和罗盘插件
-        plugins(map);
-        //地图气球
-        var object3Dlayer = balloon(map);
-        var hasBalloon = false;
-        //给气球标注按钮添加点击事件
-        $("#buttonBalloon").click(function() {
-            if (hasBalloon) {
-                map.remove(object3Dlayer);
-            } else {
-                map.add(object3Dlayer);
-            }
-            hasBalloon = !hasBalloon;
-        });
-
-
-        /**
-         * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
-         * 或者 map.getBounds() 获得地图Bounds信息
-         */
-        var mybounds = new AMap.Bounds([122.050482, 37.525571], [122.066082, 37.541141]);
-        map.setLimitBounds(mybounds);
     </script>
 </body>
 

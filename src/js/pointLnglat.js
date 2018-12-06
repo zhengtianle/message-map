@@ -64,6 +64,8 @@ function pointLnglat(){
     var array59 = [122.059773,37.53175];    //电信楼
     var array60 = [122.059592,37.532596];   //电子楼
     var array61 = [122.060864,37.53258];    //网络楼 
+    var array62 = [122.057614,37.531323];   //山东大学威海第二食堂
+    var array63 = [122.050946,37.531789];   //威海国际海水浴场
     var pointArray = new Array();
     pointArray[0] = array0;
     pointArray[1] = array1;
@@ -127,6 +129,8 @@ function pointLnglat(){
     pointArray[59] = array59;
     pointArray[60] = array60;
     pointArray[61] = array61;
+    pointArray[62] = array62;
+    pointArray[63] = array63;
     
     return pointArray;
 }
