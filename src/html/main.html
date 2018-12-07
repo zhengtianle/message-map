@@ -9,7 +9,8 @@
     <link type="text/css" rel="stylesheet" href="../css/menu.css" />
     <link type="text/css" rel="stylesheet" href="../css/font-awesome.css" />
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <!-- <link type="text/css" rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
     <style>
         html,body,#container{
@@ -39,15 +40,6 @@
             right: 90rem;
         }
         
-        /* 如何把一个控件放到地图的前面显示示例 */
-        #buttonBalloon{
-            margin: auto;
-            position: fixed;
-            bottom: 1rem;
-            width: auto;
-            border-width: 0;
-            left: 50%;
-        }
 
         /* 菜单 */
         /* * {
@@ -56,14 +48,10 @@
 			-webkit-box-sizing: border-box;
 		} */
 
-		#munu {
-            background: #f0f0f0;
-		}
-
 		.content {
             width: 280px;
             position: fixed;
-            top: 0rem;
+            top: 1rem;
             left: 1rem;
             right: 90rem;
             box-shadow: 0 2px 6px 0 rgba(114, 124, 245, .5);
@@ -98,7 +86,6 @@
 <body>
 
     <div id='container'></div>
-    <button type="button" id="buttonBalloon" class="btn btn-large btn-block btn-danger">气球标注</button>
 
     <div class="info">
         <div class="input-group">
@@ -109,7 +96,7 @@
             <div class="input-group-addon">地址</div>
             <input type="text" class="form-control" id='address' placeholder="对应的地址" disabled>
         </div>
-        
+
     </div>
 
 
@@ -127,18 +114,19 @@
                 <!-- <i class="fa fa-home"></i> -->
                 <li class="active">
                     <a style="font-weight: bold;" href="#">
-                        <img src="../images/avatar.jpg" style="width: 20%; float: left;" class="img-responsive img-circle" alt="Image">
-                        <br />&nbsp;&nbsp;&nbsp;&nbsp;这里显示用户名
+                        <img src="../images/unlogin.png" style="width: 20%; float: left;" class="img-responsive img-circle"
+                            alt="Image">
+                        <br />&nbsp;&nbsp;&nbsp;&nbsp;<span id="username"> 未登录</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="#">称号：</a></li>
-                        <li><a href="#">通知</a><span class="jquery-accordion-menu-label">1</span></li>
-                        <li><a href="#">个人中心</a></li>
+                        <li><a href="#">个人中心</a><span class="jquery-accordion-menu-label">1</span></li>
+                        <li><a href="#">退出登录</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-cog"></i>Services </a>
+                <li><a href="#"><i class="fa fa-cog"></i>设置</a>
                     <ul class="submenu">
-                        <li><a href="#">气球标注</a></li>
+                        <li><a href="javascript:void(0);" onclick="balloonView()">气球标注</a></li>
                         <li><a href="#">Hosting </a></li>
                         <li><a href="#">Design </a>
                             <ul class="submenu">
@@ -151,7 +139,9 @@
                         <li><a href="#">Consulting </a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-home"></i>系统管理 </a></li>
+                <li><a href="#"><i class="fa fa-home"></i>墙报</a>
+
+                </li>
                 <li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>
                     <ul class="submenu">
                         <li><a href="#">Web Design </a></li>
@@ -164,9 +154,9 @@
                 <li><a href="#"><i class="fa fa-user"></i>About </a></li>
 
             </ul>
-            <div class="jquery-accordion-menu-footer">
+            <!-- <div class="jquery-accordion-menu-footer">
                 Footer
-            </div>
+            </div> -->
 
         </div>
 
@@ -184,94 +174,69 @@
     <script type="text/javascript" src="../js/plugins.js"></script>
     <script type="text/javascript" src="../js/menu.js"></script>
     <script type="text/javascript">
-        $(function () {
+        //初始化地图对象，加载地图
+        var map = new AMap.Map('container', {
+            resizeEnable: true,
+            //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
+            pitch: 60, //3D视图视角
+            viewMode: '3D',
+            zooms: [3, 18], //地图显示的缩放级别范围
+            zoom: 10,
+            expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
+            showBuildingBlock: true //设置地图显示3D楼块效果
+        });
 
-            //初始化地图对象，加载地图
-            var map = new AMap.Map('container', {
-                resizeEnable: true,
-                //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
-                pitch: 60, //3D视图视角
-                viewMode: '3D',
-                zooms: [3, 18], //地图显示的缩放级别范围
-                zoom: 10,
-                expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
-                showBuildingBlock: true //设置地图显示3D楼块效果
-            });
+        /**
+         * 加载以下插件：
+         * 定位
+         * 罗盘
+         * 输入提示
+         */ 
+        plugins(map);
 
-            //加载定位和罗盘插件
-            plugins(map);
-            //地图气球
-            var object3Dlayer = balloon(map);
-            var hasBalloon = false;
+        /**
+         * 地图气球
+         */ 
+        var object3Dlayer = balloon(map);
+        var hasBalloon = false;
+
+        function balloonView() {
+            if (hasBalloon) {
+                map.remove(object3Dlayer);
+            } else {
+                map.add(object3Dlayer);
+            }
+            hasBalloon = !hasBalloon;
             //给气球标注按钮添加点击事件
-            $("#buttonBalloon").click(function () {
-                if (hasBalloon) {
-                    map.remove(object3Dlayer);
-                } else {
-                    map.add(object3Dlayer);
-                }
-                hasBalloon = !hasBalloon;
-            });
+            // $("#buttonBalloon").click(function () {
+
+            // });
+        }
 
 
-            /**
-             * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
-             * 或者 map.getBounds() 获得地图Bounds信息
-             */
-            var mybounds = new AMap.Bounds([122.050482, 37.525571], [122.066082, 37.541141]);
-            map.setLimitBounds(mybounds);
+
+        /**
+         * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
+         * 或者 map.getBounds() 获得地图Bounds信息
+         */
+        var mybounds = new AMap.Bounds([122.050482, 37.525571], [122.066082, 37.541141]);
+        map.setLimitBounds(mybounds);
 
 
-            /**
-             * 菜单
-             */
-            $(function () {
-                //顶部导航切换
-                $("#demo-list li").click(function () {
-                    $("#demo-list li.active").removeClass("active")
-                    $(this).addClass("active");
-                })
-            });
+        /**
+         * 菜单
+         */
+        $(function () {
+            //顶部导航切换
+            $("#demo-list li").click(function () {
+                $("#demo-list li.active").removeClass("active")
+                $(this).addClass("active");
+            })
+        });
+        jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
 
-            /*(function ($) {
-                $.expr[":"].Contains = function (a, i, m) {
-                    return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >=
-                        0;
-                };
 
-                
-                function filterList(header, list) {
-                    //@header 头部元素
-                    //@list 无需列表
-                    //创建一个搜素表单
-                    var form = $("<form>").attr({
-                            "class": "filterform",
-                            action: "#"
-                        }),
-                        input = $("<input>").attr({
-                            "id": "filterinput",
-                            type: "text"
-                        });
-                    $(form).append(input).appendTo(header);
-                    //搜索菜单栏
-                    $(input).change(function () {
-                        var filter = $(this).val();
-                        if (filter) {
-                            $matches = $(list).find("a:Contains(" + filter + ")").parent();
-                            $("li", list).not($matches).slideUp();
-                            $matches.slideDown();
-                        } else {
-                            $(list).find("li").slideDown();
-                        }
-                        return false;
-                    }).keyup(function () {
-                        $(this).change();
-                    });
-                }
-                filterList($("#form"), $("#demo-list"));
-                
-            })(jQuery);*/
-            jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
+        $(function () {
 
         });
     </script>
