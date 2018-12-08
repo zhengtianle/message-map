@@ -2,8 +2,11 @@ function plugins(map) {
     //异步加载定位、3D罗盘插件
     AMap.plugin([
         'AMap.Geolocation',
+        'AMap.Geocoder',
         'AMap.ControlBar',
-        'AMap.Autocomplete'
+        'AMap.Autocomplete',
+        'AMap.PlaceSearch',
+        'AMap.AdvancedInfoWindow'
     ], function () {
         /**
          * 定位
@@ -21,9 +24,13 @@ function plugins(map) {
          * 3D 罗盘控制
          */
         map.addControl(new AMap.ControlBar({
-            position: {top:'31rem',right:'10px'}
+            position: {
+                top: '31rem',
+                right: '10px'
+            }
         }));
-        geolocation.getCurrentPosition();
+        //初始化时候不自动定位
+        //geolocation.getCurrentPosition();
 
 
         /**
@@ -34,9 +41,16 @@ function plugins(map) {
             city: "威海",
             citylimit: true
         });
+        var placeSearch = new AMap.PlaceSearch({
+            city: "威海",
+            citylimit: true,
+            type: "餐饮服务|购物服务|生活服务|体育休闲服务|医疗保健服务|住宿服务|风景名胜|政府机构及社会团体|科教文化服务|交通设施服务||道路附属设施|地名地址信息|公共设施",
+            map: map,
+            autoFitView: true
+        });
         map.addControl(autoComplete);
         //点击提示栏里面的地址会自动定位到所在地点并标注
-        AMap.event.addListener(autoComplete, 'select', function(e){
+        AMap.event.addListener(autoComplete, 'select', function (e) {
             /**
              * 返回值e为一个对象，包含两个属性值：对象poi和字符串type。以北京西站为例,其poi为
             poi:{
@@ -54,11 +68,36 @@ function plugins(map) {
               }
             }
              */
-            marker = new AMap.Marker();
-            marker.setPosition(e.poi.location);
-            map.add(marker);
-            map.setFitView();
+            if (e.poi && e.poi.location) {
+                map.setZoom(17);
+                map.setCenter(e.poi.location);
+            }
+            //信息窗口
+            var infoWindow = new AMap.InfoWindow({offset: new AMap.Pixel(0, -30)});
+
             
+            var marker = new AMap.Marker({ //加点
+                map: map,
+                position: e.poi.location
+            });
+            marker.extData = {
+                'getLng': e.poi.location['lng'],
+                'getLat': e.poi.location['lat'],
+                'name': e.poi.name,
+                'address': e.poi.address
+            }; //自定义想传入的参数
+            marker.emit('click', {target: marker});
+
+            marker.on("click", function (e) {
+                infoWindow.setContent(String(e.target.extData['name']) + '<br />' + String(e.target.extData['address'])); //点击以后窗口展示的内容
+                infoWindow.open(map, e.target.getPosition());
+            });
+            map.add(marker);
+
+
+
+
+
         });
 
 
@@ -85,11 +124,11 @@ function plugins(map) {
         }
         var lnglat = document.getElementById('lnglat').value.split(',');
         //添加标注
-        if (!marker) {
-            marker = new AMap.Marker();
-            map.add(marker);
-        }
-        marker.setPosition(lnglat);
+        // if (!marker) {
+        //     marker = new AMap.Marker();
+        //     map.add(marker);
+        // }
+        // marker.setPosition(lnglat);
 
         geocoder.getAddress(lnglat, function (status, result) {
             if (status === 'complete' && result.regeocode) {

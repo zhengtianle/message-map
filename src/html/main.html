@@ -167,12 +167,12 @@
 
     <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=cdee547667e2ebbf9674c9ec33c61bd7"></script>
     <script type="text/javascript" src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
-    <!-- 谷歌jquery的cdn链接 -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="../js/balloon.js"></script>
     <script type="text/javascript" src="../js/pointLnglat.js"></script>
     <script type="text/javascript" src="../js/plugins.js"></script>
     <script type="text/javascript" src="../js/menu.js"></script>
+    <script type="text/javascript" src="../js/clickPlace.js"></script>
     <script type="text/javascript">
         //初始化地图对象，加载地图
         var map = new AMap.Map('container', {
@@ -180,8 +180,9 @@
             //mapStyle: 'amap://styles/5397ce8e5d172a33366db0676aa61a5c', //设置地图的显示样式
             pitch: 60, //3D视图视角
             viewMode: '3D',
-            zooms: [3, 18], //地图显示的缩放级别范围
-            zoom: 10,
+            zooms: [3, 19], //地图显示的缩放级别范围
+            zoom: 16,
+            center: [122.058248,37.532283],
             expandZoomRange: true, //设置为true的时候，zooms的最大级别在PC上可以扩大到20级
             showBuildingBlock: true //设置地图显示3D楼块效果
         });
@@ -193,6 +194,11 @@
          * 输入提示
          */ 
         plugins(map);
+
+        /**
+         * hotclick
+         */  
+        clickPlace(map);
 
         /**
          * 地图气球
@@ -207,15 +213,12 @@
                 map.add(object3Dlayer);
             }
             hasBalloon = !hasBalloon;
-            //给气球标注按钮添加点击事件
-            // $("#buttonBalloon").click(function () {
-
-            // });
         }
 
 
 
         /**
+         * 设置边界，脱离边界自动回归
          * 通过 new AMap.Bounds(southWest:LngLat, northEast:LngLat) 
          * 或者 map.getBounds() 获得地图Bounds信息
          */
@@ -236,9 +239,6 @@
         jQuery("#jquery-accordion-menu").jqueryAccordionMenu();
 
 
-        $(function () {
-
-        });
     </script>
 </body>
 
