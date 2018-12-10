@@ -290,3 +290,22 @@
 .black.jquery-accordion-menu ul ul.submenu li:hover>a {
 	border-left-color: #222
 }
+
+.jquery-accordion-menu ul ul.submenu li .jquery-accordion-menu-label-left{
+	float: left;
+	position: absolute;
+	padding: 1px 2px 1px 1px;
+	left: 1px;
+	top: 12px;
+	font-size: 11px;
+	color: #555;
+	line-height: 18px;
+	font-weight: 800;
+	background: #f0f0f0;
+	border-radius: 30%;
+}
+
+/* 不让“开始规划”左边有蓝色 */
+.red.jquery-accordion-menu ul ul.submenu li.startRoute:hover>a {
+	border-color: #F4606C;
+}

@@ -7,7 +7,9 @@
  * poi             AMap.PlaceSearch
  * 高级窗口         AMap.AdvancedInfoWindow
  * 鼠标，右键菜单    AMap.MouseTool
+ * 不行导航         AMap.Walking
  */
+var walking;
 //异步加载定位、3D罗盘插件
 AMap.plugin([
     'AMap.Geolocation',
@@ -16,7 +18,8 @@ AMap.plugin([
     'AMap.Autocomplete',
     'AMap.PlaceSearch',
     'AMap.AdvancedInfoWindow',
-    'AMap.MouseTool'
+    'AMap.MouseTool',
+    'AMap.Walking'
 ], function () {
     /**
      * 定位
@@ -108,6 +111,12 @@ AMap.plugin([
 
     }); //autoComplete, 'select', function (e)
 
+    walking = new AMap.Walking({
+        panel: 'panel',
+        autoFitView: true,
+        map: map
+    });
+
 
 }); //plugin function
 
@@ -117,7 +126,8 @@ AMap.plugin([
 log.success("鼠标单击显示改点坐标");
 map.on('click', function (e) {
     document.getElementById('lnglat').value = e.lnglat;
-    regeoCode();
+    var lnglat = document.getElementById('lnglat').value.split(',');
+    document.getElementById('address').value = regeoCode(lnglat);
 });
 
 
@@ -126,30 +136,33 @@ map.on('click', function (e) {
 var marker;
 var geocoder;
 
-function regeoCode() {
+/**
+ * ip->地理位置
+ * 返回一个地理位置字符串
+ * 解析错误返回ip并报错
+ * @param {*} lnglat ip地址
+ */
+function regeoCode(lnglat) {
     if (!geocoder) {
         geocoder = new AMap.Geocoder();
     }
-    var lnglat = document.getElementById('lnglat').value.split(',');
     //添加标注
     // if (!marker) {
     //     marker = new AMap.Marker();
     //     map.add(marker);
     // }
     // marker.setPosition(lnglat);
-
+    var resultString = String(lnglat);
     geocoder.getAddress(lnglat, function (status, result) {
         if (status === 'complete' && result.regeocode) {
             var address = result.regeocode.formattedAddress;
-            document.getElementById('address').value = address;
+            resultString = address;
+            console.log("1:" + resultString);
         } else {
             alert(JSON.stringify(result))
         }
     });
+    console.log("2：" + resultString);
+    return resultString;
+
 } //function regeoCode()
-function plugins(map) {
-
-
-
-
-} //function plugins(map)

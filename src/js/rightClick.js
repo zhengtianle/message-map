@@ -55,6 +55,7 @@ contextMenu.addItem("设为起点", function (e) {
     startMarker.setPosition(contextMenuPositon);
     map.add(startMarker);
     startLnglat = contextMenuPositon;
+    document.getElementById("startPoint").innerHTML = regeoCode(startLnglat);
 }, 3);
 
 //右键添加终点标记
@@ -63,6 +64,7 @@ contextMenu.addItem("设为终点", function (e) {
     endMarker.setPosition(contextMenuPositon);
     map.add(endMarker);
     endLnglat = contextMenuPositon;
+    document.getElementById("endPoint").innerHTML = regeoCode(endLnglat);
 }, 3);
 
 //地图绑定鼠标右击事件——弹出右键菜单
@@ -70,3 +72,21 @@ map.on('rightclick', function (e) {
     contextMenu.open(map, e.lnglat);
     contextMenuPositon = e.lnglat;
 });
+
+
+/**
+ * 根据起终点坐标规划步行路线
+ */
+function routePlan(){
+    //console.log(walking);
+    walking.search(startLnglat, endLnglat, function(status, result) {
+        // result即是对应的步行路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_WalkingResult
+        if (status === 'complete') {
+            log.success('绘制步行路线完成')
+        } else {
+            log.error('步行路线数据查询失败' + result)
+        } 
+    });
+    map.remove(startMarker);
+    map.remove(endMarker);
+}

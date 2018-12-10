@@ -42,13 +42,8 @@
         
 
         /* 菜单 */
-        /* * {
-			box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-		} */
 
-		.content {
+		.content, #panel {
             width: 280px;
             position: fixed;
             top: 1rem;
@@ -86,6 +81,7 @@
 <body>
 
     <div id='container'></div>
+    <div id="panel"></div>
 
     <div class="info">
         <div class="input-group">
@@ -105,7 +101,7 @@
 
         <div id="jquery-accordion-menu" class="jquery-accordion-menu red">
             <div class="jquery-accordion-menu-header" id="form">
-                <form class="filterform" action="#">
+                <form class="filterform" action="javascript:void(0);">
                     <input id="filterinput" type="text">
                 </form>
             </div>
@@ -113,45 +109,41 @@
 
                 <!-- <i class="fa fa-home"></i> -->
                 <li class="active">
-                    <a style="font-weight: bold;" href="#">
+                    <a style="font-weight: bold;" href="javascript:void(0);">
                         <img src="../images/unlogin.png" style="width: 20%; float: left;" class="img-responsive img-circle"
                             alt="Image">
                         <br />&nbsp;&nbsp;&nbsp;&nbsp;<span id="username"> 未登录</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="#">我的留言</a></li>
-                        <li><a href="#">个人中心</a><span class="jquery-accordion-menu-label"><span id="messageNumber">1</span></span></li>
-                        <li><a href="#"><span id="login">登录</span></a></li>
+                        <li><a href="javascript:void(0);">我的留言</a></li>
+                        <li><a href="javascript:void(0);">个人中心</a><span class="jquery-accordion-menu-label"><span id="messageNumber">1</span></span></li>
+                        <li><a href="javascript:void(0);"><span id="login">登录</span></a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-cog"></i>设置</a>
+                <li><a href="javascript:void(0);"><i class="fa fa-cog"></i>设置</a>
                     <ul class="submenu">
                         <li><a href="javascript:void(0);" onclick="balloonView()">气球标注</a></li>
-                        <li><a href="#">Hosting </a></li>
-                        <li><a href="#">Design </a>
+                        <li><a href="javascript:void(0);">Hosting </a></li>
+                        <li><a href="javascript:void(0);">Design </a>
                             <ul class="submenu">
-                                <li><a href="#">Graphics </a></li>
-                                <li><a href="#">Vectors </a></li>
-                                <li><a href="#">Photoshop </a></li>
-                                <li><a href="#">Fonts </a></li>
+                                <li><a href="javascript:void(0);">Graphics </a></li>
+                                <li><a href="javascript:void(0);">Vectors </a></li>
+                                <li><a href="javascript:void(0);">Photoshop </a></li>
+                                <li><a href="javascript:void(0);">Fonts </a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Consulting </a></li>
+                        <li><a href="javascript:void(0);">Consulting </a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-home"></i>墙报</a>
-
-                </li>
-                <li><a href="#"><i class="fa fa-suitcase"></i>Portfolio </a>
+                <li><a href="javascript:void(0);"><i class="fa fa-home"></i>墙报</a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-paper-plane-o"></i>路径规划</a>
                     <ul class="submenu">
-                        <li><a href="#">Web Design </a></li>
-                        <li><a href="#">Graphics </a><span class="jquery-accordion-menu-label">10 </span>
-                        </li>
-                        <li><a href="#">Photoshop </a></li>
-                        <li><a href="#">Programming </a></li>
+                        <li><a id="startPoint" href="javascript:void(0);" onclick="deleteStartMarker()" style="padding-left: 33px;"><span class="jquery-accordion-menu-label-left">起点</span>友情提示：地图右键设置起点<span class='submenu-indicator'>×</span></a></li>
+                        <li><a id="endPoint" href="javascript:void(0);" onclick="dleteEndMarker()" style="padding-left: 33px;"><span class="jquery-accordion-menu-label-left">终点</span>友情提示：地图右键设置终点<span class='submenu-indicator'>×</span></a></li>
+                        <li class="startRoute"><a href="javascript:void(0);" onclick="routePlan()" style="background-color: #F4606C; padding-left: 8.3rem;font-weight: bold; font-size: 13px;">开始规划</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-user"></i>About </a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-user"></i>About </a></li>
 
             </ul>
             <!-- <div class="jquery-accordion-menu-footer">
