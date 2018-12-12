@@ -35,9 +35,8 @@
         .info {
             position: fixed;
             width: 30rem;
-            top:50rem;
+            bottom: 1rem;
             left: 1rem;
-            right: 90rem;
         }
         
 
@@ -138,9 +137,9 @@
                 <li><a href="javascript:void(0);"><i class="fa fa-home"></i>墙报</a></li>
                 <li><a href="javascript:void(0);"><i class="fa fa-paper-plane-o"></i>路径规划</a>
                     <ul class="submenu">
-                        <li><a id="startPoint" href="javascript:void(0);" onclick="deleteStartMarker()" style="padding-left: 33px;"><span class="jquery-accordion-menu-label-left">起点</span>友情提示：地图右键设置起点<span class='submenu-indicator'>×</span></a></li>
-                        <li><a id="endPoint" href="javascript:void(0);" onclick="dleteEndMarker()" style="padding-left: 33px;"><span class="jquery-accordion-menu-label-left">终点</span>友情提示：地图右键设置终点<span class='submenu-indicator'>×</span></a></li>
-                        <li class="startRoute"><a href="javascript:void(0);" onclick="routePlan()" style="background-color: #F4606C; padding-left: 8.3rem;font-weight: bold; font-size: 13px;">开始规划</a></li>
+                        <li><a id="startPoint" href="javascript:void(0);" onclick="deleteStartMarker()" style="padding-left: 33px;"><span class='jquery-accordion-menu-label-left'>起点</span>友情提示：地图右键设置起点<span class='submenu-indicator'>×</span></a></li>
+                        <li><a id="endPoint" href="javascript:void(0);" onclick="deleteEndMarker()" style="padding-left: 33px;"><span class='jquery-accordion-menu-label-left'>终点</span>友情提示：地图右键设置终点<span class='submenu-indicator'>×</span></a></li>
+                        <li class="startRoute"><a id="startRouteOrNot" href="javascript:void(0);" onclick="routePlan()" style="background-color: #F4606C; padding-left: 8.3rem;font-weight: bold; font-size: 13px;">开始规划</a></li>
                     </ul>
                 </li>
                 <li><a href="javascript:void(0);"><i class="fa fa-user"></i>About </a></li>

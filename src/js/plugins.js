@@ -127,7 +127,7 @@ log.success("鼠标单击显示改点坐标");
 map.on('click', function (e) {
     document.getElementById('lnglat').value = e.lnglat;
     var lnglat = document.getElementById('lnglat').value.split(',');
-    document.getElementById('address').value = regeoCode(lnglat);
+    regeoCode(lnglat);
 });
 
 
@@ -152,17 +152,14 @@ function regeoCode(lnglat) {
     //     map.add(marker);
     // }
     // marker.setPosition(lnglat);
-    var resultString = String(lnglat);
+    
     geocoder.getAddress(lnglat, function (status, result) {
         if (status === 'complete' && result.regeocode) {
             var address = result.regeocode.formattedAddress;
-            resultString = address;
-            console.log("1:" + resultString);
+            document.getElementById('address').value = address;
         } else {
             alert(JSON.stringify(result))
         }
     });
-    console.log("2：" + resultString);
-    return resultString;
 
 } //function regeoCode()
