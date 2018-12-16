@@ -6,13 +6,15 @@
  */
 //创建右键菜单
 var contextMenu = new AMap.ContextMenu();
-var contextMenuPositon;
-var startMarker;
-var endMarker;
-var startLnglat = null;
-var endLnglat = null;
-var hasStartMarker = false;
-var hasEndMarker = false;
+var contextMenuPositon;         //菜单显示位置
+var startMarker;                //起点标记
+var endMarker;                  //终点标记
+var startLnglat = null;         //起点坐标
+var endLnglat = null;           //终点坐标
+var hasStartMarker = false;     //地图是否已有起点
+var hasEndMarker = false;       //地图是否已有终点
+var viewRoutePlan = false;      //显示起终点框
+var viewMenu = false;           //显示右键菜单
 AMapUI.load(['ui/overlay/SimpleMarker'], function (SimpleMarker) {
     var theme = "default";
     //内置的样式
@@ -53,6 +55,9 @@ AMapUI.load(['ui/overlay/SimpleMarker'], function (SimpleMarker) {
 
 //右键菜单添加起点标记
 contextMenu.addItem("设为起点", function (e) {
+    if(viewRoutePlan == false){
+        selectRoute()
+    }
     if(hasStartMarker){
         map.remove(startMarker);
     }
@@ -65,6 +70,9 @@ contextMenu.addItem("设为起点", function (e) {
 
 //右键添加终点标记
 contextMenu.addItem("设为终点", function (e) {
+    if(viewRoutePlan == false){
+        selectRoute()
+    }
     if(hasEndMarker){
         map.remove(endMarker);
     }
@@ -79,8 +87,16 @@ contextMenu.addItem("设为终点", function (e) {
 map.on('rightclick', function (e) {
     contextMenu.open(map, e.lnglat);
     contextMenuPositon = e.lnglat;
+    viewMenu = true;
 });
 
+map.on('click', function (e) {
+    //点击地图左键关闭右键菜单
+    if(viewMenu == true){
+        contextMenu.close();
+        viewMenu = false;
+    }
+});
 
 /**
  * 根据起终点坐标规划步行路线
@@ -90,10 +106,8 @@ function routePlan() {
         if (startLnglat != null && endLnglat != null) {
             walking.search(startLnglat, endLnglat, function (status, result) {
                 // result即是对应的步行路线数据信息，相关数据结构文档请参考  https://lbs.amap.com/api/javascript-api/reference/route-search#m_WalkingResult
-                if (status === 'complete') {
-                    log.success('绘制步行路线完成')
-                } else {
-                    log.error('步行路线数据查询失败' + result)
+                if (status != 'complete') {
+                    alert('步行路线数据查询失败' + result)
                 }
             });
             map.remove(startMarker);
@@ -114,6 +128,7 @@ function routePlan() {
     }
 }
 
+var geocoder;
 
 function routeIpToAddress(lnglat, where) {
     if (!geocoder) {
@@ -127,9 +142,9 @@ function routeIpToAddress(lnglat, where) {
                 address = address.substring(0, address.length - 8);
             }
             if (where == 0) {
-                document.getElementById("startPoint").innerHTML = "<span class='jquery-accordion-menu-label-left'>起点</span>" + address.substring(13) + "<span class='submenu-indicator'>×</span>";
+                $('#startPoint').val(address.substring(13));
             } else {
-                document.getElementById("endPoint").innerHTML = "<span class='jquery-accordion-menu-label-left'>起点</span>" + address.substring(13) + "<span class='submenu-indicator'>×</span>";
+                $('#endPoint').val(address.substring(13));
             }
         } else {
             alert(JSON.stringify(result))
@@ -140,8 +155,9 @@ function routeIpToAddress(lnglat, where) {
 
 function deleteStartMarker() {
     if (startLnglat != null) {
+        document.getElementById("startRouteOrNot").innerText = "开始规划";
         walking.clear();
-        document.getElementById("startPoint").innerHTML = "<span class='jquery-accordion-menu-label-left'>起点</span>友情提示：地图右键设置起点<span class='submenu-indicator'>×</span>";
+        $('#startPoint').val("");
         map.remove(startMarker);
         hasStartMarker = false;
         startLnglat = null;
@@ -154,8 +170,9 @@ function deleteStartMarker() {
 
 function deleteEndMarker() {
     if (endLnglat != null) {
+        document.getElementById("startRouteOrNot").innerText = "开始规划";
         walking.clear();
-        document.getElementById("endPoint").innerHTML = "<span class='jquery-accordion-menu-label-left'>终点</span>友情提示：地图右键设置终点<span class='submenu-indicator'>×</span>";
+        $('#endPoint').val("");
         map.remove(endMarker);
         hasEndMarker = false;
         endLnglat = null;
@@ -163,5 +180,19 @@ function deleteEndMarker() {
             map.add(startMarker);
             hasStartMarker = true;
         }
+    }
+}
+
+/**
+ * 点击路径规划显示始终点input和开始规划按钮
+ */
+function selectRoute(){
+    //没有显示路径规划菜单
+    if(document.getElementById("routePlanDiv").style.display == 'none'){
+        viewRoutePlan = true;
+        document.getElementById("routePlanDiv").style.display = 'block';
+    } else {
+        viewRoutePlan = false;
+        document.getElementById("routePlanDiv").style.display = 'none';
     }
 }

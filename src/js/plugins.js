@@ -38,7 +38,7 @@ AMap.plugin([
      */
     map.addControl(new AMap.ControlBar({
         position: {
-            top: '31rem',
+            top: '20rem',
             right: '10px'
         }
     }));
@@ -120,46 +120,3 @@ AMap.plugin([
 
 }); //plugin function
 
-
-
-//显示单击坐标
-log.success("鼠标单击显示改点坐标");
-map.on('click', function (e) {
-    document.getElementById('lnglat').value = e.lnglat;
-    var lnglat = document.getElementById('lnglat').value.split(',');
-    regeoCode(lnglat);
-});
-
-
-
-//逆地理编码（坐标->地址）
-var marker;
-var geocoder;
-
-/**
- * ip->地理位置
- * 返回一个地理位置字符串
- * 解析错误返回ip并报错
- * @param {*} lnglat ip地址
- */
-function regeoCode(lnglat) {
-    if (!geocoder) {
-        geocoder = new AMap.Geocoder();
-    }
-    //添加标注
-    // if (!marker) {
-    //     marker = new AMap.Marker();
-    //     map.add(marker);
-    // }
-    // marker.setPosition(lnglat);
-    
-    geocoder.getAddress(lnglat, function (status, result) {
-        if (status === 'complete' && result.regeocode) {
-            var address = result.regeocode.formattedAddress;
-            document.getElementById('address').value = address;
-        } else {
-            alert(JSON.stringify(result))
-        }
-    });
-
-} //function regeoCode()

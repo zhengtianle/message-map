@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Layui框架留言山威</title>
+    <!-- layui css -->
+    <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
+    <!-- 路径规划输入框和按钮css -->
+    <link type="text/css" rel="stylesheet" href="../css//routePlan.css" />
+    <style>
+        html,body,
+        .auto100{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin auto100">
+        <div class="layui-header">
+            <div class="layui-logo"><a href="https://github.com/zhengtianle/message-map" title="去github给该项目star" class="layui-logo">留言山威
+                    (～ o ～) star me</a></div>
+
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li style="float: left; margin-top: 0.6rem; margin-right: 1rem;">
+                    <input type="text" id="filterinput" class="layui-input" placeholder="搜索地点" autocomplete="off">
+                </li>
+                <li class="layui-nav-item"><a href="index.html">留言地图</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" onclick="selectRoute()">路径规划</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);">墙报</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);">世界留言</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:void(0);">设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:void(0);" onclick="balloonView()">气球标注</a></dd>
+                        <dd><a href="javascript:void(0);">消息管理</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="viewAuthor()">关于作者</a></dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:void(0);">
+                        <img src="../images/unlogin.png" class="layui-nav-img">
+                        <span name="username">未登录</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:void(0);">基本资料</a></dd>
+                        <dd><a href="javascript:void(0);">我的留言</a></dd>
+                        <dd><a href="javascript:void(0);">安全设置</a></dd>
+                        <dd><a href="javascript:void(0);">个人中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="#" id="login" onclick="login()">登录</a></li>
+            </ul>
+        </div>
+
+        <!-- 地图区域 -->
+        <div class="body auto100">
+            <!-- 地图容器 -->
+            <div id='container' style="width: 100%; position: absolute; top: 60px; bottom: 0;"></div>
+            <!-- 路径规划始终点 -->
+            <div id="routePlanDiv" class="layui-form-pane" style="display: none;">
+                <div>
+                    <input type="text" id="startPoint" class="layui-input" placeholder="起点" autocomplete="off" disabled="true">
+                    <div class="input_clear" onclick="deleteStartMarker()">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div>
+                    <input type="text" id="endPoint" class="layui-input top10" placeholder="终点" autocomplete="off" disabled="true">
+                    <div style="top: 60px;" class="input_clear" onclick="deleteEndMarker()">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <button id="startRouteOrNot" class="layui-btn top10" onclick="routePlan()">开始规划</button>
+                <div id="panel" style="margin-top: 50px;"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- 高德地图 -->
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.10&key=cdee547667e2ebbf9674c9ec33c61bd7"></script>
+    <script type="text/javascript" src="https://a.amap.com/jsapi_demos/static/demo-center/js/demoutils.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!-- layui js-->
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <!-- 地图 -->
+    <script type="text/javascript" src="../js/map.js"></script>
+    <!-- 地图插件 -->
+    <script type="text/javascript" src="../js/plugins.js"></script>
+    <!-- 气球标注点坐标 -->
+    <script type="text/javascript" src="../js/pointLnglat.js"></script>
+    <!-- 气球标注显示 -->
+    <script type="text/javascript" src="../js/balloon.js"></script>
+    <!-- 点击地点展示信息窗口 -->
+    <script type="text/javascript" src="../js/clickPlace.js"></script>
+    <!-- UI组件库 1.0 -->
+    <script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+    <!-- 右键菜单 -->
+    <script type="text/javascript" src="../js/rightClick.js"></script>
+    <!-- login -->
+    <script type="text/javascript" src="../js/login/login.js"></script>
+    <!-- 关于作者 -->
+    <script type="text/javascript" src="../js/aboutAuthor.js"></script>
+    <script>
+        //JavaScript代码区域
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use('element', function () {
+            var element = layui.element;
+
+        });
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,23 @@
+#routePlanDiv {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    width: 300px;
+    height: 200px;
+    
+}
+
+#startRouteOrNot{
+    float: right;
+}
+
+.top10{
+    margin-top: 10px;
+}
+
+.input_clear{
+    position:absolute;
+    right:10px;
+    top:10px;
+    cursor:pointer;
+}
