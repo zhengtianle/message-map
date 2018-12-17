@@ -1,5 +1,5 @@
 function login(){
-    var text = document.getElementById("login").innerText;
+    var text = document.getElementById("loginOrExit").innerText;
     if(text == "登录"){
         //未登录跳转到登录界面
         window.location.href = "login.html";
