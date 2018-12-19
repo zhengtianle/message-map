@@ -1,0 +1,58 @@
+.informationMain{
+    margin-left: 20px;
+}
+
+.colorbox{
+	float: left;
+	background:#0591fb;
+	width:3px;
+	height:20px;
+	margin-top: 20px;
+}
+
+.informationBox1 {
+    background: #ffffff;
+    border-radius: 1px;
+    width: 980px;
+    height: 200px;
+}
+
+.titleName {
+    float: right;
+    width: 97%;
+    font-size: 16px;
+    color: #333333;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #f2f2f2;
+    line-height: 60px;
+    margin-bottom: 1rem;
+}
+
+#viewAvatar {
+    margin-left: 5rem;
+    width: 100px;
+}
+
+.avatarButton{
+    margin-left: 5rem;
+    margin-top: 2.5rem;
+}
+
+.informationBox2 {
+    background: #ffffff;
+    border-radius: 1px;
+    width: 980px;
+    height: 500px;
+}
+
+.inputLimit{
+    width: 25rem;
+}
+
+.informationBox3{
+    background: #ffffff;
+    border-radius: 1px;
+    width: 980px;
+    height: 230px;
+}
+

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人中心</title>
+    <!-- layui css -->
+    <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
+    <link type="text/css" rel="stylesheet" href="../css/personalCenter/baseInformation.css" />
+
+    <style>
+        html,body,
+        .auto100{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin auto100">
+        <div class="layui-header">
+            <div class="layui-logo"><a href="https://github.com/zhengtianle/message-map" title="去github给该项目star" class="layui-logo">留言山威
+                    (～ o ～) star me</a></div>
+
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="index.html">留言地图</a></li>
+                <li class="layui-nav-item"><a href="javascript:return false;" onclick="return false;" style="opacity: 0.2">路径规划</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" onclick="worldComments()">世界留言</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:void(0);">设置</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:return false;" onclick="return false;" style="opacity: 0.2">气球标注</a></dd>
+                        <dd><a href="javascript:void(0);" onclick="viewAuthor()">关于作者</a></dd>
+                    </dl>
+                </li>
+            </ul>
+
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:void(0);">
+                        <img src="../images/unlogin.png" class="layui-nav-img">
+                        <span name="username">某用户</span>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="personalCenter.html">基本资料</a></dd>
+                        <dd><a href="myMessage.html">我的留言</a></dd>
+                        <dd><a href="safeConfig.html">安全设置</a></dd>
+                        <dd><a href="personalCenter.html">个人中心</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="#" id="loginOrExit" onclick="login()">退出</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="personalCenter.html">基本资料</a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:void(0);">消息</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="news.html">我的消息</a></dd>
+                            <dd><a href="notice.html">系统通知</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="myMessage.html">我的留言</a></li>
+                    <li class="layui-nav-item"><a href="safeConfig.html">安全设置</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div class="informationMain">
+                <!-- 我的头像 -->
+                <div class="informationBox1">
+                    <ul class="informationBoxTitle">
+                        <li class="colorbox"></li>
+                        <li class="titleName">我的头像</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <!-- 内容 -->
+                    <div class="informationBoxContent">
+                        <img id="viewAvatar" class="layui-circle" src="../images/avatar.jpg" />
+                        <button class="layui-btn avatarButton" title="支持：JPG、JPEG、PNG格式图片，大小不超出1M">修改头像</button>
+                    </div>
+                </div>
+
+                <!-- 基本信息 -->
+                <div class="informationBox2">
+                    <ul class="informationBoxTitle">
+                        <li class="colorbox"></li>
+                        <li class="titleName">基本信息</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <!-- 内容 -->
+                    <div class="informationBoxContent">
+                        <form class="layui-form" action="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">用户名：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名"
+                                        autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别：</label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="sex" value="男" title="男" checked>
+                                    <input type="radio" name="sex" value="女" title="女">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">手机号：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="phone" placeholder="请输入手机号"
+                                        autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">生日：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" id="birthday" name="title" placeholder="请选择出生日期" autocomplete="off"
+                                        class="layui-input inputLimit">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">地址：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" placeholder="请输入当前所在地" autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <label class="layui-form-label">随便说说：</label>
+                                <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea" style="width: 40rem;"></textarea>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 专业学号信息 -->
+                <div class="informationBox3">
+                    <ul class="informationBoxTitle">
+                        <li class="colorbox"></li>
+                        <li class="titleName">山威的我</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <!-- 内容 -->
+                    <div class="informationBoxContent">
+                        <form class="layui-form" action="">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">学号：</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" lay-verify="number" placeholder="请输入学号"
+                                        autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">学院：</label>
+                                <div class="layui-input-block inputLimit">
+                                    <select lay-verify="required">
+                                        <option value=""></option>
+                                        <option value="0">东北亚学院</option>
+                                        <option value="1">商学院</option>
+                                        <option value="2">法学院</option>
+                                        <option value="3">文化传播学院</option>
+                                        <option value="4">翻译学院</option>
+                                        <option value="5">艺术学院</option>
+                                        <option value="6">海洋学院</option>
+                                        <option value="7">机电与信息工程学院</option>
+                                        <option value="8">空间科学与物理学院</option>
+                                        <option value="9">数学与统计学院</option>
+                                        <option value="10">马克思主义学院</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                                    <button class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © 2018-留言山威
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- layui js-->
+    <script type="text/javascript" src="../layui/layui.js"></script>
+    <!-- 关于作者 -->
+    <script type="text/javascript" src="../js/aboutAuthor.js"></script>
+    <!-- 基本资料 -->
+    <script type="text/javascript" src="../js/personalCenter/baseInformation.js"></script>
+    <!-- login() -->
+    <script type="text/javascript" src="../js/checkLogin.js"></script>
+    <script>
+        //JavaScript代码区域
+        //注意：导航 依赖 element 模块，否则无法进行功能性操作
+        layui.use(['element', 'form', 'laydate'], function () {
+            var element = layui.element;
+            var form = layui.form;
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: '#birthday' //指定元素
+            });
+
+        });
+    </script>
+</body>
+
+
+</html>

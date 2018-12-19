@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>登陆</title>
+	<link rel="stylesheet" href="../css/login/style.css">
+	<!-- <link rel="stylesheet" href="../css/login/sweetalert2.min.css"> -->
+	<link rel="stylesheet" href="../css/login/base.css">
+	<link rel="stylesheet" href="../css/login/login.css" />
+	<link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
+</head>
+
+<body>
+	<!-- particles.js container -->
+	<div id="particles-js"></div>
+	<div id="wrapper">
+		<div>
+			<img src="../images/sdu.png" />
+			<h2>分享你的山威，种下你的记忆</h2>
+		</div>
+		<nav class="switch_nav">
+			<a href="register.html" id="switch_signup" class="switch_btn">注册</a>
+			<a href="javascript:void(0);" id="switch_login" class="switch_btn on">登陆</a>
+			<div class="switch_bottom" id="switch_bottom"></div>
+		</nav>
+		<div id="login">
+			<ul class="group_input">
+				<li>
+					<input type="text" class="mobile required" id="mobile" placeholder="手机号" required lay-verify="phone" />
+				</li>
+				<li>
+					<input type="password" class="psd required" id="psd" placeholder="密码" required lay-verify="required" />
+				</li>
+			</ul>
+			<button class="submit_btn" id="btnSubmit">登陆</button>
+			<div class="states">
+				<span class="left"><a href="javascript:void(0);">手机验证码登陆</a></span>
+				<span class="right"><a href="javascript:void(0);">忘记密码？</a></span>
+			</div>
+
+		</div>
+		<div class="QRcode_btn">
+			<div type="submit" class="submit_btn download_btn">支付宝花呗红包赞助</div>
+			<div class="QRcode">
+				<img src="../images/QRcode.jpg" alt="QRcode" />
+				<div class="box"></div>
+			</div>
+
+		</div>
+		<div id="footer">
+			<span>&nbsp;&copy;2018&nbsp;留言山威</span><span>·</span>
+			<a href="http://www.sdu.edu.cn/">山东大学</a><span>·</span>
+			<a href="https://www.wh.sdu.edu.cn/">山东大学威海校区</a><span>·</span>
+			<a href="http://www.qdxq.sdu.edu.cn/">山东大学青岛校区</a><span>·</span>
+			<a href="https://zhengtianle.github.io">作者个人博客</a><span>·</span><br />
+			<span>联系我：</span><a href="mailto:sorryzheng@gmail.com">sorryzheng@gmail.com</a><span>·</span>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=&site=qq&menu=yes" title="982978764">QQ</a>
+		</div>
+	</div>
+
+	
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<!-- <script type="text/javascript" src="../js/login/sweetalert2.min.js"></script> -->
+	<script type="text/javascript" src="../js/login/particles.min.js"></script>
+	<script type="text/javascript" src="../js/login/app.js"></script>
+	<script type="text/javascript" src="../layui/layui.js"></script>
+	<script type="text/javascript" src="../js/login/login.js"></script>
+	<!-- login() -->
+    <script type="text/javascript" src="../js/checkLogin.js"></script>
+	<script>
+		//JavaScript代码区域
+		layui.use('form', function () {
+			var form = layui.form;
+
+		});
+	</script>
+</body>
+
+</html>
