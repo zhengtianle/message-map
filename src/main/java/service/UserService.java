@@ -2,6 +2,9 @@ package service;
 
 import com.google.gson.Gson;
 import dao.mapper.UserMapper;
+import dao.provider.UserSqlProvider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.User;
@@ -19,6 +22,8 @@ import java.util.Map;
  */
 @Service
 public class UserService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private UserMapper userMapper;
@@ -59,6 +64,30 @@ public class UserService {
         } catch (Exception e){
             //账号重复
             resultMap.put("result", "repeat");
+        }
+
+        //System.out.println("返回的json：" + gson.toJson(resultMap));
+        return gson.toJson(resultMap);
+    }
+
+    public String updateBasicInfo(User user){
+        int affectedRows=0;
+        Gson gson = new Gson();
+        Map<String, String> resultMap = new HashMap<>();
+        try{
+            affectedRows = userMapper.updateSelective(user);
+            LOG.info("update影响行数：" + affectedRows);
+            User user1 = userMapper.getUserByUid(user.getUid());
+            LOG.info("更新后的user: " + user1);
+            if(affectedRows == 1){
+                resultMap.put("result", "success");
+                user1.setPassword("");//不用返回密码
+                resultMap.put("user", gson.toJson(user1));
+            } else {
+                resultMap.put("result", "error");
+            }
+        } catch (Exception e){
+            resultMap.put("result", "error");
         }
 
         System.out.println("返回的json：" + gson.toJson(resultMap));

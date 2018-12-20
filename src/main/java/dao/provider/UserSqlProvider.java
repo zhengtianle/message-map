@@ -1,9 +1,13 @@
 package dao.provider;
 
 import org.apache.ibatis.jdbc.SQL;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pojo.User;
 
 public class UserSqlProvider {
+
+    private static final Logger LOG = LoggerFactory.getLogger(UserSqlProvider.class);
 
     public String insertSelective(User record) {
         SQL sql = new SQL();
@@ -56,7 +60,62 @@ public class UserSqlProvider {
         if (record.getStatus() != null) {
             sql.VALUES("status", "#{status,jdbcType=INTEGER}");
         }
-        
+
+        LOG.info(sql.toString());
+        return sql.toString();
+    }
+
+    public String updateSelective(User record){
+
+        SQL sql = new SQL();
+        sql.UPDATE("user");
+
+        if(record.getTel() != null){
+            sql.SET("tel = #{tel}");
+        }
+
+        if(record.getPassword() != null){
+            sql.SET("password = #{password}");
+        }
+
+        if (record.getAvatar() != null) {
+            sql.SET("avatar = #{avatar}");
+        }
+
+        if (record.getUsername() != null) {
+            sql.SET("username = #{username}");
+        }
+
+        if (record.getSex() != null) {
+            sql.SET("sex = #{sex}");
+        }
+
+        if (record.getBirthday() != null) {
+            sql.SET("birthday = #{birthday}");
+        }
+
+        if (record.getAddress() != null) {
+            sql.SET("address = #{address}");
+        }
+
+        if (record.getProfile() != null) {
+            sql.SET("profile = #{profile}");
+        }
+
+        if (record.getSid() != null) {
+            sql.SET("sid = #{sid}");
+        }
+
+        if (record.getInstitute() != null) {
+            sql.SET("institute = #{institute}");
+        }
+
+        if (record.getStatus() != null) {
+            sql.SET("status = #{status}");
+        }
+
+        sql.WHERE("uid = #{uid}");
+        LOG.info(sql.toString());
         return sql.toString();
     }
 }

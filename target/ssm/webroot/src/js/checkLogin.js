@@ -10,16 +10,18 @@ function login() {
             //alert("确定");
             hasLogin = false;
             //切换顶部菜单到未登录状态
+            /*
             $("#loginOrExit").text("登录");
             $("#username").text("未登录");
             $("#avatar").attr("src", "../images/unlogin.png");
             $("#basicInfo").attr("href", "login.html");
             $("#myMessage").attr("href", "login.html");
             $("#safeConfig").attr("href", "login.html");
-            $("#personalCenter").attr("href", "login.html");
+            $("#personalCenter").attr("href", "login.html");*/
 
             //删除存储在浏览器中的cookie
             deleteCookie("userInfo");
+            window.location.href = "index.html";
         }
     }
 }
