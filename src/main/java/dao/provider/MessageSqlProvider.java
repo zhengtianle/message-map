@@ -26,7 +26,7 @@ public class MessageSqlProvider {
         }
         
         if (record.getTime() != null) {
-            sql.VALUES("time", "#{time,jdbcType=DATE}");
+            sql.VALUES("time", "#{time,jdbcType=VARCHAR}");
         }
         
         if (record.getStars() != null) {
@@ -53,7 +53,7 @@ public class MessageSqlProvider {
         }
         
         if (record.getTime() != null) {
-            sql.SET("time = #{time,jdbcType=DATE}");
+            sql.SET("time = #{time,jdbcType=VARCHAR}");
         }
         
         if (record.getStars() != null) {
@@ -63,5 +63,21 @@ public class MessageSqlProvider {
         sql.WHERE("mid = #{mid,jdbcType=INTEGER}");
         
         return sql.toString();
+    }
+
+    public String selectSelective(Message record){
+        SQL sql = new SQL();
+        sql.SELECT("mid","message.uid uid","location","content","time","stars","username");
+        sql.FROM("user","message");
+        sql.WHERE("user.uid = message.uid");
+        if(record.getMid() != null){
+            sql.WHERE("mid = #{mid,jdbcType=INTEGER}");
+        }
+        if(record.getLocation() != null){
+            sql.WHERE("location = #{location,jdbcType=VARCHAR}");
+        }
+
+        return sql.toString();
+
     }
 }

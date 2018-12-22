@@ -1,6 +1,9 @@
 package config;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInterceptor;
+import org.apache.ibatis.plugin.Interceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
@@ -20,6 +23,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Created with IntelliJ IDEA.
@@ -116,6 +120,17 @@ public class RootConfig {
         }
         //别名，让*Mpper.xml实体类映射可以不加上具体包名
         factory.setTypeAliasesPackage("mapper");*/
+
+        //分页插件配置
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        properties.setProperty("helperDialect", "mysql");
+        properties.setProperty("rowBoundsWithCount","true");
+        properties.setProperty("PageRowBounds","true");
+
+        pageInterceptor.setProperties(properties);
+        factory.setPlugins(new Interceptor[]{pageInterceptor});
 
         return factory;
     }

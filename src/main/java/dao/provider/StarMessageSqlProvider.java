@@ -22,7 +22,7 @@ public class StarMessageSqlProvider {
         }
         
         if (record.getTime() != null) {
-            sql.VALUES("time", "#{time,jdbcType=DATE}");
+            sql.VALUES("time", "#{time,jdbcType=VARCHAR}");
         }
         
         return sql.toString();

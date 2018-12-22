@@ -2,12 +2,19 @@ package pojo;
 
 import lombok.*;
 
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Time 18-12-22
+ * @Author ZhengTianle
+ * Description:
+ */
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Message {
+public class UserAndMessage {
     private Integer mid;
 
     private Integer uid;
@@ -20,5 +27,5 @@ public class Message {
 
     private Integer stars;
 
-
+    private String username;
 }

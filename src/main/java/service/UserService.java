@@ -51,6 +51,7 @@ public class UserService {
         User user = new User();
         user.setTel(tel);
         user.setPassword(password);
+        user.setUsername(tel);//默认把手机号当做用户名
         int affectedRows=0;
         Gson gson = new Gson();
         Map<String, String> resultMap = new HashMap<>();

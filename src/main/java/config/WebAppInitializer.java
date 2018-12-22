@@ -5,6 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -32,5 +34,10 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     protected String[] getServletMappings() {
         LOG.info("------映射根路径初始化------");
         return new String[]{ "/" };//将DispatcherServlet映射到"/"
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[]{new MyFilter("UTF-8",true,true)};
     }
 }
