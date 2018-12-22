@@ -135,7 +135,7 @@
                     $("#username").text(userInfo.username);
                 }
                 if(userInfo.avatar !== undefined){
-                    $("#avatar").attr("src", userInfo.avatar);
+                    $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
                 }
             } else {
                 //未登录状态不需要做什么

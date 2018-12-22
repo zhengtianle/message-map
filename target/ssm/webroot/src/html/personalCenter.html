@@ -42,7 +42,7 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
-                        <img src="../images/unlogin.png" class="layui-nav-img">
+                        <img id="avatar" src="../images/unlogin.png" class="layui-nav-img">
                         <span id="username">某用户</span>
                     </a>
                     <dl class="layui-nav-child">
@@ -88,8 +88,9 @@
                     <div class="clear"></div>
                     <!-- 内容 -->
                     <div class="informationBoxContent">
-                        <img id="viewAvatar" class="layui-circle" src="../images/avatar.jpg" />
-                        <button class="layui-btn avatarButton" title="支持：JPG、JPEG、PNG格式图片，大小不超出1M">修改头像</button>
+                        <img id="viewAvatar" class="layui-upload-img layui-circle" src="../images/avatar.jpg" style="width: 10%;height: 10%;"/>
+                        <button type="button" id="modifyAvatar" class="layui-btn avatarButton" title="支持：JPG、JPEG、PNG格式图片，大小不超出1M">修改头像</button>
+                        <p id="demoText" style="margin-left: 5rem;"></p>
                     </div>
                 </div>
 
@@ -145,7 +146,7 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit lay-filter="button1">立即提交</button>
-                                    <button class="layui-btn layui-btn-primary" onclick="reset()">重置</button>
+                                    <button class="layui-btn layui-btn-primary" onclick="initFirstForm()">重置</button>
                                 </div>
                             </div>
 
@@ -192,7 +193,7 @@
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
                                     <button class="layui-btn" lay-submit lay-filter="button2">立即提交</button>
-                                    <button class="layui-btn layui-btn-primary">重置</button>
+                                    <button class="layui-btn layui-btn-primary" onclick="initSecondForm()">重置</button>
                                 </div>
                             </div>
 

@@ -2,14 +2,14 @@ package service;
 
 import com.google.gson.Gson;
 import dao.mapper.UserMapper;
-import dao.provider.UserSqlProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import pojo.User;
+import utils.UploadUtil;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,7 +70,10 @@ public class UserService {
         return gson.toJson(resultMap);
     }
 
-    public String updateBasicInfo(User user){
+    /**
+     * 修改基本信息和我的山威信息
+     */
+    public String updateUserInfo(User user){
         int affectedRows=0;
         Gson gson = new Gson();
         Map<String, String> resultMap = new HashMap<>();
@@ -92,5 +95,38 @@ public class UserService {
 
         System.out.println("返回的json：" + gson.toJson(resultMap));
         return gson.toJson(resultMap);
+    }
+
+    /**
+     * 保存头像并修改头像
+     */
+    public String updateAvatar(MultipartFile file, String path, Integer uid){
+        Gson gson = new Gson();
+        Map<String, Object> map = new HashMap<>();
+        try{
+            //上传头像
+            String image = UploadUtil.uploadFile(file, path);
+            //更新头像
+            User user = new User();
+            user.setUid(uid);
+            user.setAvatar(image);
+            int affectedRows = userMapper.updateSelective(user);
+            LOG.info("update影响行数：" + affectedRows);
+            User user1 = userMapper.getUserByUid(user.getUid());
+            LOG.info("更新后的user: " + user1);
+            if(affectedRows == 1){
+                map.put("code", 0);
+                user1.setPassword("");//不用返回密码
+                map.put("user", gson.toJson(user1));
+            } else {
+                map.put("code", 1);
+            }
+
+        } catch (Exception e){
+            map.put("code", 1);
+            e.printStackTrace();
+        }
+
+        return gson.toJson(map);
     }
 }

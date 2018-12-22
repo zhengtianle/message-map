@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import pojo.User;
 import service.UserService;
 
@@ -15,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,7 +40,7 @@ public class UserController {
     /**
      * 接收手机号和密码
      * 验证是否可以登录
-     * print json字符串
+     * print json（成功失败标志，若是成功还会有一个user信息）
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public void loginCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -78,7 +84,7 @@ public class UserController {
         user.setAddress(address);
         user.setProfile(profile);
         LOG.info("updateBasicInfo中传参user：" + user.toString());
-        String result = userService.updateBasicInfo(user);
+        String result = userService.updateUserInfo(user);
         out.print(result);
     }
 
@@ -93,8 +99,19 @@ public class UserController {
         user.setSid(sid);
         user.setInstitute(institute);
 
-        //String result = userService.register(mobile, pin, psd);
-        //out.print(result);
+        String result = userService.updateUserInfo(user);
+        out.print(result);
+    }
+
+    @RequestMapping(value = "/updateAvatar", method = RequestMethod.POST)
+    public void updateAvatar(@RequestParam("file")MultipartFile file, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        //指定图片存储路径
+        String path = "/home/zhengtianle/workspace/idea-workspace/ssm/src/main/webapp/webroot/src/images/upload";
+
+        String result = userService.updateAvatar(file, path, uid);
+        PrintWriter out = response.getWriter();
+        out.print(result);
     }
 
 }

@@ -1,17 +1,58 @@
-initUsername();
+initUsernameAndAvatar();
 initFirstForm();
 initSecondForm();
 initAvatar();
 
 
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
-layui.use(['element', 'form', 'laydate'], function () {
+layui.use(['element', 'form', 'laydate', 'upload'], function () {
     var element = layui.element;
     var form = layui.form;
     var laydate = layui.laydate;
+    var upload = layui.upload;
     //执行一个laydate实例
     laydate.render({
         elem: '#birthday' //指定元素
+    });
+
+    //修改上传头像
+    upload.render({
+        elem: '#modifyAvatar',
+        data: {
+            "uid":eval("(" + getCookie("userInfo") + ")").uid
+        },
+        accept: 'images',
+        acceptMime: 'image/jpg, image/png, image/jpeg',
+        url: '/updateAvatar',
+        size: 1024,//1M
+        before: function (obj) {
+            //预读本地文件示例，不支持ie8
+            obj.preview(function (index, file, result) {
+                console.log("该图片的base64编码：" + result);
+                $('#viewAvatar').attr('src', result); //图片链接（base64）
+            });
+        },
+        done: function (res) {
+            //如果上传失败
+            if (res.code > 0) {
+                return layer.msg('上传头像失败');
+            }
+            //上传成功
+            //把用户基本信息存储到cookie中，不设置过期时间（浏览器关闭自动过期）
+            document.cookie = "userInfo=" + res.user;
+            //更新菜单的头像
+            initUsernameAndAvatar();
+            return layer.msg('修改成功');
+
+        },
+        error: function () {
+            //演示失败状态，并实现重传
+            var demoText = $('#demoText');
+            demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+            demoText.find('.demo-reload').on('click', function () {
+                uploadInst.upload();
+            });
+        }
     });
 
     /**
@@ -46,9 +87,7 @@ layui.use(['element', 'form', 'laydate'], function () {
                     initUsername();
 
                 } else {
-                    layer.open({
-                        content: "<div>修改失败！</div>"
-                    });
+                    layer.msg("修改失败");
                 }
                 console.log('提交表单成功！');
             },
@@ -87,9 +126,7 @@ layui.use(['element', 'form', 'laydate'], function () {
                     initSecondForm();
 
                 } else {
-                    layer.open({
-                        content: "<div>修改失败！</div>"
-                    });
+                    layer.msg("修改失败");
                 }
                 console.log('提交表单成功！');
             },
@@ -102,18 +139,15 @@ layui.use(['element', 'form', 'laydate'], function () {
 
 });
 
-/**
- * 重置
- */
-function reset() {
-
-}
 
 /**
- * 初始化头像
+ * 初始化头像表单
  */
 function initAvatar() {
-
+    var userInfo = eval("(" + getCookie("userInfo") + ")");
+    if(userInfo.avatar !== undefined){
+        $("#viewAvatar").attr("src", userInfo.avatar);
+    }
 }
 
 /**
@@ -134,11 +168,11 @@ function initFirstForm() {
     $("textarea[name='profile']").val(profile);
     if (userInfo.sex === 1) {
         //男
-        $("#man").attr("checked",true);
-        $("#woman").attr("checked",false);
+        $("#man").attr("checked", true);
+        $("#woman").attr("checked", false);
     } else {
-        $("#woman").attr("checked",true);
-        $("#man").attr("checked",false);
+        $("#woman").attr("checked", true);
+        $("#man").attr("checked", false);
     }
 
 
@@ -156,17 +190,13 @@ function initSecondForm() {
 }
 
 /**
- * 初始化顶部菜单用户名
+ * 初始化顶部菜单用户名和头像
  */
-function initUsername() {
+function initUsernameAndAvatar() {
     var userInfo = eval("(" + getCookie("userInfo") + ")");
     var username = userInfo.username !== undefined ? userInfo.username : userInfo.tel;
     $("#username").text(username);
-}
-
-/**
- * 初始化顶部菜单头像
- */
-function initAvatar() {
-
+    if(userInfo.avatar !== undefined){
+        $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
+    }
 }
