@@ -17,7 +17,7 @@ function placeSearch_CallBack(data) { //infoWindow.open(map, result.lnglat);
 
 
 function createContent(poi) { //信息窗体内容
-    clickLocation = String(poi.location.lng) + String(poi.location.lat)
+    clickLocation = String(poi.location.lng) + ' ' + String(poi.location.lat)
     //实例化信息窗体
     var title = String(poi.name),
         content = [];

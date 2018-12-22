@@ -95,7 +95,7 @@ AMap.plugin([
         }; //自定义想传入的参数
 
         marker.on("click", function (e) {
-            clickLocation = String(e.target.extData['getLng']) + String(e.target.extData['getLat']);
+            clickLocation = String(e.target.extData['getLng']) + ' ' + String(e.target.extData['getLat']);
             //实例化信息窗体
             var title = String(e.target.extData['name']),
                 content = [];

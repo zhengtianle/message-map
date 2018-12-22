@@ -41,8 +41,8 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
-                        <img src="../images/unlogin.png" class="layui-nav-img">
-                        <span name="username">某用户</span>
+                        <img src="../images/unlogin.png" id="avatar" class="layui-nav-img">
+                        <span name="username" id="username">某用户</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="personalCenter.html">基本资料</a></dd>
@@ -92,6 +92,7 @@
 
     <!-- layui js-->
     <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <!-- 关于作者 -->
     <script type="text/javascript" src="../js/aboutAuthor.js"></script>
     <!-- login() -->
@@ -102,6 +103,26 @@
         layui.use(['element', 'form', 'laydate'], function () {
             var element = layui.element;
 
+            var userInfo = eval("(" + getCookie("userInfo") + ")");
+            console.log(userInfo);
+            if (userInfo) {
+                console.log("设置顶部菜单状态");
+                //登录状态切换顶部菜单为登录状态菜单
+                $("#loginOrExit").text("退出");
+                $("#basicInfo").attr("href", "personalCenter.html");
+                $("#myMessage").attr("href", "myMessage.html");
+                $("#safeConfig").attr("href", "safeConfig.html");
+                $("#personalCenter").attr("href", "personalCenter.html");
+                $("#username").text(userInfo.tel);
+                if (userInfo.username !== undefined) {
+                    $("#username").text(userInfo.username);
+                }
+                if (userInfo.avatar !== undefined) {
+                    $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
+                }
+            } else {
+                //未登录状态不需要做什么
+            }
 
         });
     </script>

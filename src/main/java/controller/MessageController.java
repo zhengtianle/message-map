@@ -36,7 +36,10 @@ public class MessageController {
         PrintWriter out = response.getWriter();
         Integer page = Integer.valueOf(request.getParameter("page"));
         String location = request.getParameter("location");
-        String result = messageService.getMessages(page,location);
+        Message message = new Message();
+        message.setLocation(location);
+        //一次查八条
+        String result = messageService.getMessages(page,8,message);
 
         out.print(result);
     }
@@ -57,6 +60,20 @@ public class MessageController {
         LOG.info("即将插入的留言信息：" + message.toString());
 
         String result = messageService.leaveAMessage(message);
+        out.print(result);
+    }
+
+    @RequestMapping(value = "/myMessages", method = RequestMethod.POST)
+    public void myMessages(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        Integer page = Integer.valueOf(request.getParameter("page"));
+        Integer limit = Integer.valueOf(request.getParameter("limit"));
+        Message message = new Message();
+        message.setUid(uid);
+
+        String result = messageService.myMessages(page,limit, message);
+
         out.print(result);
     }
 }

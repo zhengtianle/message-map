@@ -3,6 +3,9 @@ package service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import dao.mapper.MessageMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,14 +50,11 @@ public class MessageService {
         return gson.toJson(resultMap);
     }
 
-    public String getMessages(int page, String location){
+    public String getMessages(int page, int limit, Message message){
         Gson gson = new Gson();
         Map<String,Object> resultMap = new HashMap<>();
-        Message message = new Message();
-        message.setLocation(location);
         try{
-            //一次查八条
-            PageHelper.startPage(page,8);
+            PageHelper.startPage(page,limit);
             List<UserAndMessage> resultList = messageMapper.selectSelective(message);
             PageInfo pageInfo = new PageInfo(resultList);
             resultMap.put("result", "success");
@@ -63,6 +63,30 @@ public class MessageService {
 
         } catch (Exception e){
             resultMap.put("result", "error");
+        }
+        LOG.info("分页查询的留言信息json：" + gson.toJson(resultMap));
+        return gson.toJson(resultMap);
+    }
+
+    public String myMessages(int page, int limit, Message message){
+        Gson gson = new Gson();
+        Map<String,Object> resultMap = new HashMap<>();
+        try{
+            PageHelper.startPage(page,limit);
+            List<UserAndMessage> resultList = messageMapper.selectSelective(message);
+            //Json的解析类对象
+            JsonParser parser = new JsonParser();
+            //将JSON的String 转成一个JsonArray对象
+            JsonArray jsonArray = parser.parse(gson.toJson(resultList)).getAsJsonArray();
+
+            PageInfo pageInfo = new PageInfo(resultList);
+            resultMap.put("code", 0);
+            resultMap.put("count", pageInfo.getTotal());
+            resultMap.put("msg","");
+            resultMap.put("data",jsonArray);
+
+        } catch (Exception e){
+            resultMap.put("code", 1);
         }
         LOG.info("分页查询的留言信息json：" + gson.toJson(resultMap));
         return gson.toJson(resultMap);

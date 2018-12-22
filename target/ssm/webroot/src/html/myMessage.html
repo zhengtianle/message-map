@@ -41,8 +41,8 @@
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
-                        <img src="../images/unlogin.png" class="layui-nav-img">
-                        <span name="username">某用户</span>
+                        <img src="../images/unlogin.png" id="avatar" class="layui-nav-img">
+                        <span name="username" id="username">某用户</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="personalCenter.html">基本资料</a></dd>
@@ -76,11 +76,10 @@
         </div>
 
         <div class="layui-body">
-            我的留言页面
+            <table class="layui-hide" id="myMessageTable"></table>
         </div>
 
         <div class="layui-footer">
-            <!-- 底部固定区域 -->
             © 2018-留言山威
         </div>
 
@@ -93,6 +92,7 @@
 
     <!-- layui js-->
     <script type="text/javascript" src="../layui/layui.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <!-- 关于作者 -->
     <script type="text/javascript" src="../js/aboutAuthor.js"></script>
     <!-- login() -->
@@ -100,10 +100,67 @@
     <script>
         //JavaScript代码区域
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use(['element', 'form', 'laydate'], function () {
+        layui.use(['element', 'form', 'laydate', 'table'], function () {
             var element = layui.element;
+            var table = layui.table;
+            var userInfo = eval("(" + getCookie("userInfo") + ")");
+
+            table.render({
+                elem: '#myMessageTable',
+                url: '/myMessages',
+                method: 'post',
+                where: {
+                    "uid": userInfo.uid
+                },
+                cellMinWidth: 80, //全局定义常规单元格的最小宽度
+                cols: [
+                    [{
+                        field: 'mid',
+                        title: 'ID',
+                        sort: true
+                    }, {
+                        field: 'location',
+                        title: '地点',
+                        sort: true
+                    }, {
+                        field: 'content',
+                        title: '留言'
+                    }, {
+                        field: 'time',
+                        title: '时间',
+                        sort: true
+                    }, {
+                        field: 'stars',
+                        title: '点赞数',
+                        sort: true
+                    }]
+                ],
+                page: true
+            });
 
         });
+
+
+        var userInfo = eval("(" + getCookie("userInfo") + ")");
+        console.log(userInfo);
+        if (userInfo) {
+            console.log("设置顶部菜单状态");
+            //登录状态切换顶部菜单为登录状态菜单
+            $("#loginOrExit").text("退出");
+            $("#basicInfo").attr("href", "personalCenter.html");
+            $("#myMessage").attr("href", "myMessage.html");
+            $("#safeConfig").attr("href", "safeConfig.html");
+            $("#personalCenter").attr("href", "personalCenter.html");
+            $("#username").text(userInfo.tel);
+            if (userInfo.username !== undefined) {
+                $("#username").text(userInfo.username);
+            }
+            if (userInfo.avatar !== undefined) {
+                $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
+            }
+        } else {
+            //未登录状态不需要做什么
+        }
     </script>
 </body>
 
