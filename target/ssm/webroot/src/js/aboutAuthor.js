@@ -9,21 +9,30 @@ function viewAuthor() {
     });
 }
 
-function worldComments() {
+function worldComments(location) {
     layui.use(['layer', 'flow'], function () {
         var layer = layui.layer;
         var flow = layui.flow;
 
-        layer.open({
+        var world_comments = layer.open({
             type: 1,
-            title: '世界留言',
+            title: location+'留言',
             closeBtn: false,
-            id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            area: ['800px', '500px'],
+            id: 'LAY_world_message' //设定一个id，防止重复弹出
                 ,
             offset: 'auto',
-            btn: ['关闭'],
+            btn: ['写留言', '关闭'],
+            yes: function (index, layero) {
+                //按钮【写留言】的回调
+                writeMessage(location);
+            },
+            btn2: function (index, layero) {
+                //按钮【关闭】的回调
+                layer.close(world_comments);
+            },
             //content: '<ul style="padding: 20px; height: 300px; line-height: 22px; font-size:15px; font-weight: 500;" class="flow-default" id="LAY_demo1"></ul>',
-            content: '<div id="LAY_scroll" style="height:350px;"><table class="layui-table" lay-even="" lay-skin="nob"><thead><tr><th>昵称</th><th>时间</th><th>给山威的留言</th><th>点赞</th></tr> </thead><tbody id="LAY_demo1"></tbody></table></div>'
+            content: '<div id="LAY_scroll"><table class="layui-table" lay-even="" lay-skin="nob"><thead><tr><th>昵称</th><th>时间</th><th>给山威的留言</th><th>点赞</th></tr> </thead><tbody id="LAY_demo1"></tbody></table></div>'
         });
 
         flow.load({
@@ -52,7 +61,7 @@ function worldComments() {
                     type: "post",
                     data: {
                         "page": page,
-                        "location": "sduwh"
+                        "location": location
                     },
                     success: function (data) {
                         var json = eval("(" + data + ")");
@@ -60,7 +69,7 @@ function worldComments() {
                         if (json.result === "success") {
                             var message = eval("(" + json.content + ")");
                             for (var p in message) {
-                                lis.push('<tr><td>'+message[p].username+'</td><td>'+message[p].time+'</td><td>'+message[p].content+'</td><td>'+message[p].stars+'</td></tr>')
+                                lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td>' + message[p].stars + '</td></tr>')
                             }
 
                             //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -81,4 +90,57 @@ function worldComments() {
         });
 
     });
+}
+
+/**
+ * 写留言
+ */
+
+function writeMessage(location) {
+    layui.use(['layer'], function () {
+        var layer = layui.layer;
+
+
+        var write_message = layer.open({
+            type: 1,
+            title: '写留言',
+            closeBtn: false,
+            area: ['500px', '300px'],
+            id: 'LAY_write_message', //设定一个id，防止重复弹出
+            offset: 'auto',
+            btn: ['确定', '取消'],
+            yes: function (index, layero) {
+                //按钮【确定】的回调
+                var message = $("#writedMessage").val();
+                $.ajax({
+                    url: 'http://localhost:8080/leaveAMessage',
+                    type: "post",
+                    data: {
+                        "uid": eval("(" + getCookie("userInfo") + ")").uid,
+                        "content": message,
+                        "location": location
+                    },
+                    success: function (data) {
+                        var json = eval("(" + data + ")");
+                        if (json.result === "success") {
+                            layer.msg("留言成功");
+                            layer.close(write_message);
+                        } else {
+                            layer.msg("留言失败");
+                        }
+                        console.log('提交留言成功！');
+                    },
+                    error: function (e) {
+                        console.log('提交留言失败：' + e);
+                    }
+                }); //ajax
+            },
+            btn2: function (index, layero) {
+                //按钮【取消】的回调
+                layer.close(write_message);
+            },
+            content: '<textarea placeholder="请输入内容" id="writedMessage" class="layui-textarea" style="height:200px;"></textarea>'
+        });
+    });
+
 }

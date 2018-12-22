@@ -7,38 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292053c6-0b71-49d1-a463-17c31b521d0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/MyFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MessageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/UserAndMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/MessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/controller/MessageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/service/MessageService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/css/infoWindow.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/ssm/webroot/src/css/infoWindow.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/RootConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/WebAppInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/WebAppInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/provider/StarMessageSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/provider/StarMessageSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/StarMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/StarMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/myMessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/myMessage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/notice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/personalCenter.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/personalCenter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/safeConfig.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/html/safeConfig.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/aboutAuthor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/aboutAuthor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/RootConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/RootConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/mapper/MessageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/mapper/MessageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/provider/MessageSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/provider/MessageSqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/provider/StarMessageSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/provider/StarMessageSqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pojo/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/StarMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pojo/StarMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/config/RootConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/config/RootConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/mapper/MessageMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/mapper/MessageMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/provider/MessageSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/provider/MessageSqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/provider/StarMessageSqlProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/dao/provider/StarMessageSqlProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/pojo/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/pojo/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/pojo/StarMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/pojo/StarMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/WEB-INF/classes/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/clickPlace.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/clickPlace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/plugins.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/myMessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/myMessage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/news.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/news.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/notice.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/notice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/personalCenter.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/personalCenter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/html/safeConfig.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/html/safeConfig.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/js/aboutAuthor.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/js/aboutAuthor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/js/clickPlace.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/js/clickPlace.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ssm/webroot/src/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/ssm/webroot/src/js/plugins.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,6 +61,7 @@
           <entry key="dummy" value="45" />
           <entry key="html" value="47" />
           <entry key="java" value="11938" />
+          <entry key="js" value="42" />
           <entry key="jsp" value="74" />
           <entry key="properties" value="429" />
           <entry key="xml" value="1787" />
@@ -82,6 +72,7 @@
           <entry key="HTML" value="47" />
           <entry key="JAVA" value="11938" />
           <entry key="JSP" value="74" />
+          <entry key="JavaScript" value="42" />
           <entry key="PLAIN_TEXT" value="46" />
           <entry key="Properties" value="429" />
           <entry key="XML" value="1787" />
@@ -92,8 +83,8 @@
           <entry key="1" value="3" />
           <entry key="class" value="10" />
           <entry key="html" value="5" />
-          <entry key="java" value="144" />
-          <entry key="js" value="3" />
+          <entry key="java" value="145" />
+          <entry key="js" value="4" />
           <entry key="jsp" value="8" />
           <entry key="properties" value="4" />
           <entry key="xml" value="31" />
@@ -103,9 +94,9 @@
         <counts>
           <entry key="CLASS" value="10" />
           <entry key="HTML" value="5" />
-          <entry key="JAVA" value="144" />
+          <entry key="JAVA" value="145" />
           <entry key="JSP" value="8" />
-          <entry key="JavaScript" value="3" />
+          <entry key="JavaScript" value="4" />
           <entry key="PLAIN_TEXT" value="3" />
           <entry key="Properties" value="4" />
           <entry key="XML" value="31" />
@@ -115,11 +106,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="56" column="41" lean-forward="true" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="41" />
+            <state relative-caret-position="370">
+              <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/MessageService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="191">
+              <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -155,8 +158,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="19" selection-start-column="19" selection-end-column="19" />
+            <state relative-caret-position="144">
+              <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -164,8 +167,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+            <state relative-caret-position="20">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/webroot/src/js/clickPlace.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-300">
+              <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+              <folding>
+                <element signature="n#style#0;n#button#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -243,6 +258,7 @@
         <option value="$PROJECT_DIR$/src/main/java/config/MyFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/config/WebAppInitializer.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MessageController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/webroot/src/js/clickPlace.js" />
       </list>
     </option>
   </component>
@@ -293,10 +309,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1440" />
-    <option name="width" value="1366" />
-    <option name="height" value="768" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="30" />
+    <option name="width" value="1440" />
+    <option name="height" value="838" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -415,6 +431,33 @@
               <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
               <item name="ssm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="webroot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="webroot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="webroot" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -426,7 +469,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545471307268" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545487858649" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../LeetCodePractice" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -636,7 +679,7 @@
       <workItem from="1545138013260" duration="8290000" />
       <workItem from="1545185897814" duration="6902000" />
       <workItem from="1545201503939" duration="40613000" />
-      <workItem from="1545447270929" duration="14526000" />
+      <workItem from="1545447270929" duration="23548000" />
     </task>
     <servers />
   </component>
@@ -673,13 +716,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128049000" />
+    <option name="totallyTimeSpent" value="137071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="30" width="1440" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25646552" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25646552" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -689,7 +731,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32909605" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1690341" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32386363" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39914772" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -764,13 +806,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapperXml/User.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mapper/UserSqlProvider.java.1" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pojo/User.java.1" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pojo/UserKey.java" />
@@ -1059,30 +1094,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="55" column="19" lean-forward="true" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="19" selection-start-column="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -1116,10 +1127,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="56" column="41" lean-forward="true" selection-start-line="56" selection-start-column="41" selection-end-line="56" selection-end-column="41" />
+        <state relative-caret-position="370">
+          <caret line="58" column="44" selection-start-line="58" selection-start-column="44" selection-end-line="58" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/webroot/src/js/clickPlace.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="25" column="51" lean-forward="true" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#button#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

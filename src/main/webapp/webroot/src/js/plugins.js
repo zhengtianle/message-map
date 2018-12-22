@@ -10,6 +10,7 @@
  * 不行导航         AMap.Walking
  */
 var walking;
+var clickLocation;
 //异步加载定位、3D罗盘插件
 AMap.plugin([
     'AMap.Geolocation',
@@ -80,13 +81,10 @@ AMap.plugin([
             map.setCenter(e.poi.location);
         }
         //信息窗口
-        var infoWindow = new AMap.InfoWindow({
-            offset: new AMap.Pixel(0, -30)
-        });
-
-
+        var infoWindo
+        // 使用clearMap方法删除所有覆盖物
+        map.clearMap();
         var marker = new AMap.Marker({ //加点
-            map: map,
             position: e.poi.location
         });
         marker.extData = {
@@ -95,12 +93,21 @@ AMap.plugin([
             'name': e.poi.name,
             'address': e.poi.address
         }; //自定义想传入的参数
-        marker.emit('click', {
-            target: marker
-        });
 
         marker.on("click", function (e) {
-            infoWindow.setContent(String(e.target.extData['name']) + '<br />' + String(e.target.extData['address'])); //点击以后窗口展示的内容
+            clickLocation = String(e.target.extData['getLng']) + ' ' + String(e.target.extData['getLat']);
+            //实例化信息窗体
+            var title = String(e.target.extData['name']),
+                content = [];
+            content.push("<img src='../images/sdu.png'>地址：" + String(e.target.extData['address']));
+            content.push("经度：" + String(e.target.extData['getLng']));
+            content.push("纬度：" + String(e.target.extData['getLat']));
+            content.push("<button class='layui-btn layui-btn-normal layui-btn-xs' onclick='comments()'>查看此处留言</button><button class='layui-btn layui-btn-normal layui-btn-xs' onclick='writeAddressMessage()' style='margin-left:50px;'>写留言</button>");
+            infoWindow = new AMap.InfoWindow({
+                isCustom: true, //使用自定义窗体
+                content: createInfoWindow(title, content.join("<br/>")),
+                offset: new AMap.Pixel(16, -45)
+            });
             infoWindow.open(map, e.target.getPosition());
         });
         map.add(marker);
@@ -119,4 +126,3 @@ AMap.plugin([
 
 
 }); //plugin function
-

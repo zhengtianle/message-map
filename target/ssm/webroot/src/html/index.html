@@ -9,7 +9,8 @@
     <!-- layui css -->
     <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
     <!-- 路径规划输入框和按钮css -->
-    <link type="text/css" rel="stylesheet" href="../css//routePlan.css" />
+    <link type="text/css" rel="stylesheet" href="../css/routePlan.css" />
+    <link type="text/css" rel="stylesheet" href="../css/infoWindow.css" />
     <style>
         html,body,
         .auto100{
@@ -32,7 +33,7 @@
                 </li>
                 <li class="layui-nav-item"><a href="index.html">留言地图</a></li>
                 <li class="layui-nav-item"><a href="javascript:void(0);" onclick="selectRoute()">路径规划</a></li>
-                <li class="layui-nav-item"><a href="javascript:void(0);" onclick="worldComments()">世界留言</a></li>
+                <li class="layui-nav-item"><a href="javascript:void(0);" onclick="worldComments('sduwh')">世界留言</a></li>
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">设置</a>
                     <dl class="layui-nav-child">
@@ -96,6 +97,8 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     <!-- layui js-->
     <script type="text/javascript" src="../layui/layui.js"></script>
+    <!-- 关于作者 -->
+    <script type="text/javascript" src="../js/aboutAuthor.js"></script>
     <!-- 地图 -->
     <script type="text/javascript" src="../js/map.js"></script>
     <!-- 地图插件 -->
@@ -110,8 +113,6 @@
     <script src="https://webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
     <!-- 右键菜单 -->
     <script type="text/javascript" src="../js/rightClick.js"></script>
-    <!-- 关于作者 -->
-    <script type="text/javascript" src="../js/aboutAuthor.js"></script>
     <!-- login() cookie-->
     <script type="text/javascript" src="../js/checkLogin.js"></script>
     <script>
@@ -119,10 +120,10 @@
         //注意：导航 依赖 element 模块，否则无法进行功能性操作
         layui.use('element', function () {
             var element = layui.element;
-            
+
             var userInfo = eval("(" + getCookie("userInfo") + ")");
             console.log(userInfo);
-            if(userInfo){
+            if (userInfo) {
                 console.log("设置顶部菜单状态");
                 //登录状态切换顶部菜单为登录状态菜单
                 $("#loginOrExit").text("退出");
@@ -131,10 +132,10 @@
                 $("#safeConfig").attr("href", "safeConfig.html");
                 $("#personalCenter").attr("href", "personalCenter.html");
                 $("#username").text(userInfo.tel);
-                if(userInfo.username !== undefined){
+                if (userInfo.username !== undefined) {
                     $("#username").text(userInfo.username);
                 }
-                if(userInfo.avatar !== undefined){
+                if (userInfo.avatar !== undefined) {
                     $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
                 }
             } else {
