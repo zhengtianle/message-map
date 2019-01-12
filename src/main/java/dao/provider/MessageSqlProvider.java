@@ -69,7 +69,10 @@ public class MessageSqlProvider {
         SQL sql = new SQL();
         sql.SELECT("mid","message.uid uid","location","content","time","stars","username");
         sql.FROM("user","message");
-        sql.WHERE("user.uid = message.uid");
+        sql.WHERE("message.uid = user.uid");
+        if(record.getUid() != null){
+            sql.WHERE("message.uid = #{uid,jdbcType=INTEGER}");
+        }
         if(record.getMid() != null){
             sql.WHERE("mid = #{mid,jdbcType=INTEGER}");
         }

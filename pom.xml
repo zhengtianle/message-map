@@ -140,7 +140,7 @@
       <version>2.6</version>
     </dependency>
 
-    <!-- mybatis分页插件 -->
+    <!-- mybatis分页插件1.3.7 -->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper</artifactId>

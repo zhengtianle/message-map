@@ -84,7 +84,7 @@ layui.use(['element', 'form', 'laydate', 'upload'], function () {
 
                     //更新基本资料
                     initFirstForm();
-                    initUsername();
+                    initUsernameAndAvatar();
 
                 } else {
                     layer.msg("修改失败");
@@ -146,7 +146,7 @@ layui.use(['element', 'form', 'laydate', 'upload'], function () {
 function initAvatar() {
     var userInfo = eval("(" + getCookie("userInfo") + ")");
     if(userInfo.avatar !== undefined){
-        $("#viewAvatar").attr("src", userInfo.avatar);
+        $("#viewAvatar").attr("src", "../images/upload/" + userInfo.avatar);
     }
 }
 

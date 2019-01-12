@@ -112,28 +112,32 @@ function writeMessage(location) {
             yes: function (index, layero) {
                 //按钮【确定】的回调
                 var message = $("#writedMessage").val();
-                $.ajax({
-                    url: 'http://localhost:8080/leaveAMessage',
-                    type: "post",
-                    data: {
-                        "uid": eval("(" + getCookie("userInfo") + ")").uid,
-                        "content": message,
-                        "location": location
-                    },
-                    success: function (data) {
-                        var json = eval("(" + data + ")");
-                        if (json.result === "success") {
-                            layer.msg("留言成功");
-                            layer.close(write_message);
-                        } else {
-                            layer.msg("留言失败");
+                if(message === ""){
+                    layer.msg("请输入内容");
+                } else {
+                    $.ajax({
+                        url: 'http://localhost:8080/leaveAMessage',
+                        type: "post",
+                        data: {
+                            "uid": eval("(" + getCookie("userInfo") + ")").uid,
+                            "content": message,
+                            "location": location
+                        },
+                        success: function (data) {
+                            var json = eval("(" + data + ")");
+                            if (json.result === "success") {
+                                layer.msg("留言成功");
+                                layer.close(write_message);
+                            } else {
+                                layer.msg("留言失败");
+                            }
+                            console.log('提交留言成功！');
+                        },
+                        error: function (e) {
+                            console.log('提交留言失败：' + e);
                         }
-                        console.log('提交留言成功！');
-                    },
-                    error: function (e) {
-                        console.log('提交留言失败：' + e);
-                    }
-                }); //ajax
+                    }); //ajax
+                }
             },
             btn2: function (index, layero) {
                 //按钮【取消】的回调

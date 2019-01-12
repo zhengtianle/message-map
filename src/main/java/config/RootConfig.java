@@ -1,5 +1,7 @@
 package config;
 
+import com.alibaba.druid.filter.Filter;
+import com.alibaba.druid.filter.logging.Log4j2Filter;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInterceptor;
@@ -9,6 +11,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,9 +23,12 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -41,6 +47,9 @@ import java.util.Properties;
 public class RootConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(RootConfig.class);
+
+    @Autowired
+    private Filter log4j2Filter;
 
     /**
      * 必须返回一个 PropertySourcesPlaceholderConfigurer 的bean,
@@ -98,6 +107,9 @@ public class RootConfig {
         } catch (SQLException e) {
             LOG.error("druid配置初始化过滤器", e);
         }
+        List<Filter> filterList = new ArrayList<>();
+        filterList.add(log4j2Filter);
+        dataSource.setProxyFilters(filterList);
         dataSource.setConnectionProperties(connectionProperties);
         return dataSource;
     }
@@ -142,6 +154,17 @@ public class RootConfig {
         dataSourceTransactionManager.setDataSource(dataSource);
 
         return dataSourceTransactionManager;
+    }
+
+    @Bean
+    public Log4j2Filter logFilter(){
+        Log4j2Filter log4j2Filter = new Log4j2Filter();
+        log4j2Filter.setConnectionLogEnabled(false);//所有连接相关的日志
+        log4j2Filter.setStatementLogEnabled(false);//所有Statement相关的日志
+        log4j2Filter.setResultSetLogEnabled(true);//是否显示结果集
+        log4j2Filter.setStatementExecutableSqlLogEnable(true);//是否显示SQL语句
+
+        return log4j2Filter;
     }
 
 }

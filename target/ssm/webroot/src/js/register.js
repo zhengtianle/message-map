@@ -22,7 +22,7 @@ $(function () {
     // });
     // var errorMsg = $(".error-msg").text();
     //为表单元素添加失去焦点事件
-    $("form :input").blur(function () {
+    $("#formDiv :input").blur(function () {
         var $parent = $(this).parent();
         $parent.find(".msg").remove(); //删除以前的提醒元素（find()：查找匹配元素集中元素的所有匹配元素）
         //验证验证码
@@ -78,8 +78,8 @@ $(function () {
         //点击按钮时，通过trigger()来触发文本框的失去焦点事件
         $("#btnSubmit").click(function () {
             //trigger 事件执行完后，浏览器会为submit按钮获得焦点
-            $("form .required:input").trigger("blur");
-            var numError = $("form .onError").length;
+            $("#formDiv .required:input").trigger("blur");
+            var numError = $("#formDiv .onError").length;
             if (numError) {
                 return false;
             } else {

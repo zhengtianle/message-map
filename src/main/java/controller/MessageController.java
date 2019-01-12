@@ -71,6 +71,7 @@ public class MessageController {
         Integer limit = Integer.valueOf(request.getParameter("limit"));
         Message message = new Message();
         message.setUid(uid);
+        LOG.debug(message.toString());
 
         String result = messageService.myMessages(page,limit, message);
 
