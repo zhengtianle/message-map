@@ -16,7 +16,7 @@ function worldComments(location) {
 
         var world_comments = layer.open({
             type: 1,
-            title: location+'留言',
+            title: location + '留言',
             closeBtn: false,
             area: ['800px', '500px'],
             id: 'LAY_world_message' //设定一个id，防止重复弹出
@@ -24,8 +24,15 @@ function worldComments(location) {
             offset: 'auto',
             btn: ['写留言', '关闭'],
             yes: function (index, layero) {
-                //按钮【写留言】的回调
-                writeMessage(location);
+                var userInfo = eval("(" + getCookie("userInfo") + ")");
+                console.log(userInfo);
+                if (userInfo) { //已登录
+                    //按钮【写留言】的回调
+                    writeMessage(location);
+                } else {
+                    console.log("请先登录");
+                    layer.msg("请先登录");
+                }
             },
             btn2: function (index, layero) {
                 //按钮【关闭】的回调
@@ -112,7 +119,7 @@ function writeMessage(location) {
             yes: function (index, layero) {
                 //按钮【确定】的回调
                 var message = $("#writedMessage").val();
-                if(message === ""){
+                if (message === "") {
                     layer.msg("请输入内容");
                 } else {
                     $.ajax({

@@ -35,13 +35,25 @@ function createContent(poi) { //信息窗体内容
 
 }
 
-function comments(){
+function comments() {
     worldComments(clickLocation);
 }
 
 function writeAddressMessage() {
-    //用当前坐标的经纬度当做location
-    writeMessage(clickLocation);
+    layui.use(['layer'], function () {
+        var layer = layui.layer;
+
+        var userInfo = eval("(" + getCookie("userInfo") + ")");
+        console.log(userInfo);
+        if (userInfo) { //已登录
+            //用当前坐标的经纬度当做location
+            writeMessage(clickLocation);
+        } else {
+            console.log("请先登录");
+            layer.msg("请先登录");
+        }
+    });
+
 }
 
 //构建自定义信息窗体

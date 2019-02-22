@@ -5,7 +5,8 @@ initAvatar();
 
 
 //注意：导航 依赖 element 模块，否则无法进行功能性操作
-layui.use(['element', 'form', 'laydate', 'upload'], function () {
+layui.use(['layer','element', 'form', 'laydate', 'upload'], function () {
+    var layer = layui.layer;
     var element = layui.element;
     var form = layui.form;
     var laydate = layui.laydate;

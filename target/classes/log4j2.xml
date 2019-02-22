@@ -2,12 +2,13 @@
 <!--参考链接：
 https://github.com/alibaba/druid/wiki/Druid%E4%B8%AD%E4%BD%BF%E7%94%A8log4j2%E8%BF%9B%E8%A1%8C%E6%97%A5%E5%BF%97%E8%BE%93%E5%87%BA-->
 <!-- Log4j 2.x 配置文件。每30秒自动检查和应用配置文件的更新； -->
+<!--日志目录为tomcat目录下的bin/logs/-->
 <Configuration status="warn" monitorInterval="30" strict="true" schema="Log4J-V2.2.xsd">
     <Appenders>
         <!-- 输出到控制台 -->
         <Console name="Console" target="SYSTEM_OUT">
             <!-- 需要记录的级别 -->
-             <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />
+             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
             <PatternLayout pattern="[%d{HH:mm:ss.SSS}] %-5level %class{36} %L %M - %msg%xEx%n"/>
         </Console>
 
