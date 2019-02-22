@@ -130,4 +130,32 @@ public class UserService {
 
         return gson.toJson(map);
     }
+
+    /**
+     * 修改密码
+     */
+    public String modifyPassword(Integer uid, String oldPassword, String newPassword) {
+        Gson gson = new Gson();
+        Map<String, String> resultMap = new HashMap<>();
+        User user = userMapper.getUserByUid(uid);
+        if(!user.getPassword().equals(oldPassword)) {
+            //输入的原密码错误
+            resultMap.put("result", "oldPassword");
+        } else {
+            try {
+                User updateUser = new User();
+                updateUser.setUid(uid);
+                updateUser.setPassword(newPassword);
+                int affectedRows = userMapper.updateSelective(updateUser);
+                if(affectedRows == 1){
+                    resultMap.put("result", "success");
+                } else {
+                    resultMap.put("result", "error");
+                }
+            } catch (Exception e) {
+                resultMap.put("result", "error");
+            }
+        }
+        return gson.toJson(resultMap);
+    }
 }

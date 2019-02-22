@@ -8,6 +8,7 @@
     <title>个人中心</title>
     <!-- layui css -->
     <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
+    <link type="text/css" rel="stylesheet" href="../css/personalCenter/safeConfig.css" />
 
     <style>
         html,body,
@@ -76,7 +77,52 @@
         </div>
 
         <div class="layui-body">
-            安全设置界面
+            <div class="informationMain">
+                <div class="informationBox1">
+                    <ul class="informationBoxTitle">
+                        <li class="colorbox"></li>
+                        <li class="titleName">修改密码</li>
+                    </ul>
+                    <div class="clear"></div>
+                    <!-- 内容 -->
+                    <div class="informationBoxContent">
+                        <form class="layui-form">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">原密码：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="oldPassword" required lay-verify="required"
+                                        placeholder="请输入原密码" autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">新密码：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="newPassword" lay-verify="pass" placeholder="请输入6-30位新密码"
+                                        autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">确认新密码：</label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="newPasswordPlus" lay-verify="pass"
+                                        placeholder="再次输入新密码" autocomplete="off" class="layui-input inputLimit">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="buttonPassword">立即修改</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         <div class="layui-footer">
@@ -97,34 +143,8 @@
     <script type="text/javascript" src="../js/aboutAuthor.js"></script>
     <!-- login() -->
     <script type="text/javascript" src="../js/checkLogin.js"></script>
-    <script>
-        //JavaScript代码区域
-        //注意：导航 依赖 element 模块，否则无法进行功能性操作
-        layui.use(['element', 'form', 'laydate'], function () {
-            var element = layui.element;
-
-            var userInfo = eval("(" + getCookie("userInfo") + ")");
-            console.log(userInfo);
-            if (userInfo) {
-                console.log("设置顶部菜单状态");
-                //登录状态切换顶部菜单为登录状态菜单
-                $("#loginOrExit").text("退出");
-                $("#basicInfo").attr("href", "personalCenter.html");
-                $("#myMessage").attr("href", "myMessage.html");
-                $("#safeConfig").attr("href", "safeConfig.html");
-                $("#personalCenter").attr("href", "personalCenter.html");
-                $("#username").text(userInfo.tel);
-                if (userInfo.username !== undefined) {
-                    $("#username").text(userInfo.username);
-                }
-                if (userInfo.avatar !== undefined) {
-                    $("#avatar").attr("src", "../images/upload/" + userInfo.avatar);
-                }
-            } else {
-                //未登录状态不需要做什么
-            }
-        });
-    </script>
+    <script type="text/javascript" src="../js/topMenu.js"></script>
+    <script type="text/javascript" src="../js/personalCenter/safeConfig.js"></script>
 </body>
 
 

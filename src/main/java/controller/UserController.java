@@ -114,4 +114,15 @@ public class UserController {
         out.print(result);
     }
 
+    @RequestMapping(value = "/modifyPassword", method = RequestMethod.POST)
+    public void modifyPassword(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        PrintWriter out = response.getWriter();
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        String oldPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+
+        String result = userService.modifyPassword(uid, oldPassword, newPassword);
+        out.print(result);
+    }
+
 }
