@@ -76,7 +76,7 @@ function worldComments(location) {
                         if (json.result === "success") {
                             var message = eval("(" + json.content + ")");
                             for (var p in message) {
-                                lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td>' + message[p].stars + '</td></tr>')
+                                lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td><i class="layui-icon layui-icon-praise" style="cursor:pointer;" onclick="star(this, ' + message[p].mid + ')">&nbsp;' + message[p].stars + '</i></td></tr>')
                             }
 
                             //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -154,4 +154,63 @@ function writeMessage(location) {
         });
     });
 
+}
+
+/**
+ * (当前元素, 留言id)
+ */
+function star(element, mid) {
+    layui.use(['layer'], function () {
+        var layer = layui.layer;
+
+        var userInfo = eval("(" + getCookie("userInfo") + ")");
+        if (!userInfo) {
+            layer.open({
+                content: "<div>请先登录！</div>",
+                btn: ['登录', '关闭'],
+                yes: function (index, layero) {
+                    //跳转登录界面
+                    window.location.href = "login.html";
+                },
+                btn2: function (index, layero) {
+                    //关闭按钮
+                }
+            });
+            return;
+        }
+
+        //已登录
+        if (element.style == "cursor:pointer;color:#E67E22;") {
+            //已点赞
+            layer.msg("不可重复点赞!");
+        } else {
+            //未点赞
+            $.ajax({
+                url: 'http://localhost:8080/starAMessage',
+                type: "post",
+                data: {
+                    "uid": eval("(" + getCookie("userInfo") + ")").uid,
+                    "mid": mid
+                },
+                success: function (data) {
+                    var json = data;
+                    console.log("返回的数据：" + json);
+                    if (json.result === "success") {
+                        layer.msg("点赞数+1");
+                        //element.className = "layui-icon layui-icon-praise star" //改变已点赞的颜色
+                        element.style = "cursor:pointer;color:#E67E22;"
+                        element.innerText = " " + (parseInt(element.innerText) + 1);
+                    } else {
+                        layer.msg("点赞失败");
+                    }
+
+                },
+                error: function (e) {
+                    layer.msg("提交留言查询请求失败");
+                }
+
+
+            }); //ajax
+        }
+    });
 }

@@ -16,6 +16,12 @@ public interface MessageMapper {
     })
     int deleteByPrimaryKey(Integer mid);
 
+    @Select({
+            "select uid from message ",
+            "where mid = #{mid,jdbcType=INTEGER}"
+    })
+    int getUidByMid(Integer mid);
+
 
     @InsertProvider(type= MessageSqlProvider.class, method="insertSelective")
     int insertSelective(Message record);

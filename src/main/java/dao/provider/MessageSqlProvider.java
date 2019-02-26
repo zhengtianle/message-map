@@ -3,7 +3,7 @@ package dao.provider;
 import org.apache.ibatis.jdbc.SQL;
 import pojo.Message;
 
-public class MessageSqlProvider {
+public class  MessageSqlProvider {
 
     public String insertSelective(Message record) {
         SQL sql = new SQL();
@@ -57,7 +57,7 @@ public class MessageSqlProvider {
         }
         
         if (record.getStars() != null) {
-            sql.SET("stars = #{stars,jdbcType=INTEGER}");
+            sql.SET("stars = stars+1");//注意这里只能加1，不能直接赋值
         }
         
         sql.WHERE("mid = #{mid,jdbcType=INTEGER}");
