@@ -63,12 +63,20 @@ function worldComments(location) {
                 //     next(lis.join(''), page < 2); //假设总页数为 10
                 // }, 500);
                 var lis = [];
+                var uid;
+                var userInfo = eval("(" + getCookie("userInfo") + ")");
+                if(userInfo) {
+                    uid = userInfo.uid;
+                } else {
+                    uid = -1;
+                }
                 $.ajax({
                     url: 'http://localhost:8080/getMessages',
                     type: "post",
                     data: {
                         "page": page,
-                        "location": location
+                        "location": location,
+                        "uid": uid
                     },
                     success: function (data) {
                         var json = eval("(" + data + ")");
@@ -76,7 +84,12 @@ function worldComments(location) {
                         if (json.result === "success") {
                             var message = eval("(" + json.content + ")");
                             for (var p in message) {
-                                lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td><i class="layui-icon layui-icon-praise" style="cursor:pointer;" onclick="star(this, ' + message[p].mid + ')">&nbsp;' + message[p].stars + '</i></td></tr>')
+                                if(message[p].liked == true) {
+                                    //已点赞，置为橙色
+                                    lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td><i class="layui-icon layui-icon-praise star" style="cursor:pointer;color:#E67E22;" onclick="star(this, ' + message[p].mid + ')">&nbsp;' + message[p].stars + '</i></td></tr>');
+                                } else {
+                                    lis.push('<tr><td>' + message[p].username + '</td><td>' + message[p].time + '</td><td>' + message[p].content + '</td><td><i class="layui-icon layui-icon-praise" style="cursor:pointer;" onclick="star(this, ' + message[p].mid + ')">&nbsp;' + message[p].stars + '</i></td></tr>');
+                                }
                             }
 
                             //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
@@ -179,8 +192,9 @@ function star(element, mid) {
             return;
         }
 
+        
         //已登录
-        if (element.style == "cursor:pointer;color:#E67E22;") {
+        if (element.className == "layui-icon layui-icon-praise star") {
             //已点赞
             layer.msg("不可重复点赞!");
         } else {
@@ -198,7 +212,8 @@ function star(element, mid) {
                     if (json.result === "success") {
                         layer.msg("点赞数+1");
                         //element.className = "layui-icon layui-icon-praise star" //改变已点赞的颜色
-                        element.style = "cursor:pointer;color:#E67E22;"
+                        element.style.cssTest = "cursor:pointer;color:#E67E22;";
+                        element.className = "layui-icon layui-icon-praise star";
                         element.innerText = " " + (parseInt(element.innerText) + 1);
                     } else {
                         layer.msg("点赞失败");

@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import dao.mapper.MessageMapper;
 import org.slf4j.Logger;
@@ -13,10 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.Message;
 import pojo.UserAndMessage;
+import pojo.UserMessageStar;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLOutput;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,6 +30,9 @@ public class MessageService {
 
     @Autowired
     private MessageMapper messageMapper;
+
+    @Autowired
+    private StarMessageService starMessageService;
 
     public String leaveAMessage(Message message){
         int affectedRows = 0;
@@ -50,15 +52,27 @@ public class MessageService {
         return gson.toJson(resultMap);
     }
 
-    public String getMessages(int page, int limit, Message message){
+    public String getMessages(int page, int limit, Message message, Integer uid){
         Gson gson = new Gson();
         Map<String,Object> resultMap = new HashMap<>();
         try{
             PageHelper.startPage(page,limit);
-            List<UserAndMessage> resultList = messageMapper.selectSelective(message);
+            List<UserAndMessage> messageList = messageMapper.selectSelective(message);//评论列表
+            List<Integer> staredMid = starMessageService.getStaredMessageBySfid(uid);//该用户点过赞的mid
+            Map<Integer, Boolean> midMap = new HashMap<>();
+            staredMid.forEach(mid -> {midMap.put(mid, true);});
+            //将该用户点过赞的留言 置 liked = true(默认为false)
+            List<UserMessageStar> resultList = new ArrayList<>();
+            messageList.forEach(m -> {
+                UserMessageStar userMessageStar = new UserMessageStar(m);
+                if(midMap.containsKey(m.getMid())) {
+                    userMessageStar.setLiked(true);
+                }
+                resultList.add(userMessageStar);
+            });
             PageInfo pageInfo = new PageInfo(resultList);
             resultMap.put("result", "success");
-            resultMap.put("pages", pageInfo.getPages());
+            resultMap.put("pages", pageInfo.getPages()+1);
             resultMap.put("content",gson.toJson(resultList));
 
         } catch (Exception e){

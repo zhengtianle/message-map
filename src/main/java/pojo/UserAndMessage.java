@@ -17,7 +17,7 @@ import lombok.*;
 public class UserAndMessage {
     private Integer mid;
 
-    private Integer uid;
+    private Integer uid;//表示留言者id
 
     private String location;
 

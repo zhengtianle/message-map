@@ -36,10 +36,11 @@ public class MessageController {
         PrintWriter out = response.getWriter();
         Integer page = Integer.valueOf(request.getParameter("page"));
         String location = request.getParameter("location");
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
         Message message = new Message();
         message.setLocation(location);
         //一次查八条
-        String result = messageService.getMessages(page,8,message);
+        String result = messageService.getMessages(page,8,message,uid);
 
         out.print(result);
     }

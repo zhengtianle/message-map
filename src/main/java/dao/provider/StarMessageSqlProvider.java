@@ -27,4 +27,21 @@ public class StarMessageSqlProvider {
         
         return sql.toString();
     }
+
+    public String getStaredSelective(StarMessage record) {
+        SQL sql = new SQL();
+        sql.SELECT("mid", "sfid", "stid", "time");
+        sql.FROM("star_message");
+        if(record.getMid() != null) {
+            sql.WHERE("mid = #{mid,jdbcType=INTEGER}");
+        }
+        if(record.getSfid() != null) {
+            sql.WHERE("sfid = #{sfid,jdbcType=INTEGER}");
+        }
+        if(record.getStid() != null) {
+            sql.WHERE("stid = #{stid,jdbcType=INTEGER}");
+        }
+
+        return sql.toString();
+    }
 }

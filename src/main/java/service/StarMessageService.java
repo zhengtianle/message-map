@@ -8,9 +8,7 @@ import pojo.Message;
 import pojo.StarMessage;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -62,5 +60,18 @@ public class StarMessageService {
         }
 
         return resultMap;
+    }
+
+    /**
+     * @param uid 当前登录用户id
+     * @return 此用户点过赞的评论id集合
+     */
+    public List<Integer> getStaredMessageBySfid(Integer uid) {
+        StarMessage starMessage = new StarMessage();
+        starMessage.setSfid(uid);
+        List<StarMessage> midList = starMessageMapper.getStaredSelective(starMessage);
+        List<Integer> list = new ArrayList<>();
+        midList.forEach(sm -> {list.add(sm.getMid());});
+        return list;
     }
 }
