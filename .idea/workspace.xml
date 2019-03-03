@@ -7,44 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292053c6-0b71-49d1-a463-17c31b521d0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/SystemNotificationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/SystemNotificationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/notice/SatrNotice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pojo/SystemNotification.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/SystemNotificationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageNotificationMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/service/MessageNotificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/StarMessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/StarMessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/Config.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/MyFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/RootConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/WebAppInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/WebConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/HomeController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/MessageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/StarMessageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/mapper/MessageMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/mapper/StarMessageMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/provider/MessageSqlProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/provider/StarMessageSqlProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/provider/UserSqlProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/StarMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/UserAndMessage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pojo/UserMessageStar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/MessageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/StarMessageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/UploadUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -85,7 +53,7 @@
           <entry key="1" value="1" />
           <entry key="dummy" value="70" />
           <entry key="html" value="58" />
-          <entry key="java" value="19208" />
+          <entry key="java" value="20772" />
           <entry key="js" value="89" />
           <entry key="jsp" value="107" />
           <entry key="properties" value="429" />
@@ -95,7 +63,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="58" />
-          <entry key="JAVA" value="19208" />
+          <entry key="JAVA" value="20772" />
           <entry key="JSP" value="107" />
           <entry key="JavaScript" value="89" />
           <entry key="PLAIN_TEXT" value="71" />
@@ -108,7 +76,7 @@
           <entry key="1" value="3" />
           <entry key="class" value="15" />
           <entry key="html" value="11" />
-          <entry key="java" value="244" />
+          <entry key="java" value="258" />
           <entry key="js" value="15" />
           <entry key="jsp" value="12" />
           <entry key="log" value="1" />
@@ -120,7 +88,7 @@
         <counts>
           <entry key="CLASS" value="15" />
           <entry key="HTML" value="11" />
-          <entry key="JAVA" value="244" />
+          <entry key="JAVA" value="258" />
           <entry key="JSP" value="12" />
           <entry key="JavaScript" value="15" />
           <entry key="PLAIN_TEXT" value="4" />
@@ -133,76 +101,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controller/SystemNotificationController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/StarMessageService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="46" column="59" selection-start-line="46" selection-start-column="59" selection-end-line="46" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="125" column="46" selection-start-line="125" selection-start-column="46" selection-end-line="125" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="351">
+              <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/service/SystemNotificationService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="52" column="66" lean-forward="true" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/SystemNotificationMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/pojo/SystemNotification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-9">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="120">
+              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -227,6 +150,7 @@
       <find>inse</find>
       <find>selectSelective</find>
       <find>User</find>
+      <find>m</find>
     </findStrings>
     <replaceStrings>
       <replace>dataSource</replace>
@@ -238,8 +162,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/pojo/Person.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapperXml/Person.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
         <option value="$PROJECT_DIR$/src/main/java/pojo/User.java.1" />
         <option value="$PROJECT_DIR$/src/main/java/mapper/UserSqlProvider.java" />
@@ -269,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/test/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/StarMessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/provider/MessageSqlProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/provider/StarMessageSqlProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mapper/StarMessageMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojo/UserAndMessage.java" />
@@ -282,13 +203,16 @@
         <option value="$PROJECT_DIR$/src/main/java/service/StarMessageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojo/SystemNotification.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mapper/SystemNotificationMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/SystemNotificationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/SystemNotificationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/SystemNotificationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/mapper/MessageNotificationMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/MessageNotificationService.java" />
       </list>
     </option>
   </component>
@@ -344,6 +268,38 @@
     <option name="y" value="138" />
     <option name="width" value="952" />
     <option name="height" value="554" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Android</id>
+          </State>
+          <State>
+            <id>CorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>LintAndroid</id>
+          </State>
+          <State>
+            <id>Manifest</id>
+          </State>
+          <State>
+            <id>MessagesCorrectnessLintAndroid</id>
+          </State>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Spelling</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -417,6 +373,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pojo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ssm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ssm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -441,20 +405,21 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551601868162" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551605543638" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="GrepConsole" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="dao.mapper" />
       <recent name="service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -674,7 +639,7 @@
       <workItem from="1551249955420" duration="11398000" />
       <workItem from="1551322603220" duration="3435000" />
       <workItem from="1551534788304" duration="603000" />
-      <workItem from="1551581018358" duration="7534000" />
+      <workItem from="1551581018358" duration="10542000" />
     </task>
     <servers />
   </component>
@@ -711,7 +676,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224720000" />
+    <option name="totallyTimeSpent" value="227728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1366" height="714" extended-state="6" />
@@ -776,20 +741,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/webroot/src/js/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="89" column="52" selection-start-line="89" selection-start-column="24" selection-end-line="89" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/webroot/src/js/login/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-100">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/webroot/src/html/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1584">
@@ -1032,20 +983,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-20">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
@@ -1053,13 +990,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1074,16 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9">
           <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/SystemNotificationMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1120,8 +1040,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/SystemNotificationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
+        <state relative-caret-position="317">
+          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/SystemNotificationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageNotificationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1130,8 +1070,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/service/SystemNotificationService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
+        <state relative-caret-position="697">
           <caret line="52" column="66" lean-forward="true" selection-start-line="52" selection-start-column="66" selection-end-line="52" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="25" column="41" selection-start-line="25" selection-start-column="41" selection-end-line="25" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/MessageNotificationService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="27" column="64" lean-forward="true" selection-start-line="27" selection-start-column="64" selection-end-line="27" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

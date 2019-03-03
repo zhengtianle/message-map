@@ -22,6 +22,8 @@ public interface MessageMapper {
     })
     int getUidByMid(Integer mid);
 
+    @Select("select * from message where mid = #{mid,jdbcType=INTEGER}")
+    Message getMessageByMid(Integer mid);
 
     @InsertProvider(type= MessageSqlProvider.class, method="insertSelective")
     int insertSelective(Message record);

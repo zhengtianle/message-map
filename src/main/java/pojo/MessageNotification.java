@@ -26,4 +26,6 @@ public class MessageNotification {
     private String time;
 
     private int read;
+
+    private Message message;//数据库中没有这个字段
 }
