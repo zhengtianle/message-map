@@ -51,7 +51,7 @@ public class MessageController {
         Integer uid = Integer.valueOf(request.getParameter("uid"));
         String location = request.getParameter("location");
         String content = request.getParameter("content");
-        SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = sdf.format(new Date());
         Message message = new Message();
         message.setUid(uid);

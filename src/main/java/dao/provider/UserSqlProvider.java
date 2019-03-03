@@ -61,6 +61,14 @@ public class UserSqlProvider {
             sql.VALUES("status", "#{status,jdbcType=INTEGER}");
         }
 
+        if(record.getTime() != null) {
+            sql.VALUES("time","#{time,jdbcType=VARCHAR}");
+        }
+
+        if(record.getReadtime() != null) {
+            sql.VALUES("readtime","#{readtime,jdbcType=VARCHAR}");
+        }
+
         LOG.info(sql.toString());
         return sql.toString();
     }
@@ -112,6 +120,10 @@ public class UserSqlProvider {
 
         if (record.getStatus() != null) {
             sql.SET("status = #{status}");
+        }
+
+        if(record.getReadtime() != null) {
+            sql.SET("readtime = #{readtime}");
         }
 
         sql.WHERE("uid = #{uid}");

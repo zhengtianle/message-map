@@ -33,5 +33,7 @@ public class User {
 
     private Integer status;
 
+    private String time;//注册时间
 
+    private String readtime;//最近一次阅读系统通知的时间
 }

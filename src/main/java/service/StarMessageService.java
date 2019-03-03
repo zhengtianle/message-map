@@ -44,7 +44,7 @@ public class StarMessageService {
             starMessage.setMid(mid);
             starMessage.setSfid(uid);
             starMessage.setStid(toUid);
-            SimpleDateFormat sdf = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time = sdf.format(new Date());
             starMessage.setTime(time);
             int affectedRows = starMessageMapper.insert(starMessage);

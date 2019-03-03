@@ -10,6 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import pojo.User;
 import utils.UploadUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,6 +54,9 @@ public class UserService {
         user.setTel(tel);
         user.setPassword(password);
         user.setUsername(tel);//默认把手机号当做用户名
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        user.setTime(sdf.format(new Date()));
+        user.setReadtime(sdf.format(new Date()));//阅读时间初始为注册时间
         int affectedRows=0;
         Gson gson = new Gson();
         Map<String, String> resultMap = new HashMap<>();
