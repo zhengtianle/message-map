@@ -1,10 +1,16 @@
 package service;
 
 import dao.mapper.MessageMapper;
+import dao.mapper.MessageNotificationMapper;
 import dao.mapper.StarMessageMapper;
+import dao.provider.StarMessageSqlProvider;
+import notice.StarNotice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pojo.Message;
+import pojo.MessageNotification;
 import pojo.StarMessage;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +25,7 @@ import java.util.*;
  */
 @Service
 public class StarMessageService {
+    private static final Logger LOG = LoggerFactory.getLogger(StarMessageService.class);
 
     @Autowired
     private MessageMapper messageMapper;
@@ -26,9 +33,13 @@ public class StarMessageService {
     @Autowired
     private StarMessageMapper starMessageMapper;
 
+    @Autowired
+    private MessageNotificationMapper messageNotificationMapper;
+
     public Map<String, String> starAMessage(int uid, int mid) {
         Map<String, String> resultMap = new HashMap<>();
-
+        StarMessage starMessage = new StarMessage();
+        MessageNotification messageNotification = new MessageNotification();
         try {
             //mid留言点赞数+1
             Message message = new Message();
@@ -40,7 +51,6 @@ public class StarMessageService {
             int toUid = messageMapper.getUidByMid(mid);
 
             //插入starMessage记录
-            StarMessage starMessage = new StarMessage();
             starMessage.setMid(mid);
             starMessage.setSfid(uid);
             starMessage.setStid(toUid);
@@ -53,8 +63,19 @@ public class StarMessageService {
             } else {
                 resultMap.put("result", "error");
             }
-            //TODO: 通知被点赞的用户，可以使用AOP
+            //通知被点赞的用户
+            if(toUid != uid) {
+                messageNotification.setSuid(uid);
+                messageNotification.setRuid(toUid);
+                messageNotification.setTitle("点赞");
+                messageNotification.setContent(String.valueOf(mid));
+                messageNotification.setTime(sdf.format(new Date()));
+                messageNotificationMapper.insert(messageNotification);
+            }
         } catch (Exception e) {
+            LOG.warn("企图更新表message中mid为 " + mid + " 的star数+1");
+            LOG.warn("企图向表star_message插入：" + starMessage.toString());
+            LOG.warn("企图向表message_notification插入：" + messageNotification.toString());
             e.printStackTrace();
             resultMap.put("result", "error");
         }

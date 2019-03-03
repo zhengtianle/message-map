@@ -1,5 +1,6 @@
 package dao.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import pojo.MessageNotification;
 
@@ -19,4 +20,10 @@ public interface MessageNotificationMapper {
      */
     @Select("select * from message_notification where ruid = #{uid}")
     List<MessageNotification> getMsgNotificationByRuid(int uid);
+
+    @Insert({
+            "insert into message_notification(suid, ruid, title, content, time) ",
+            "values(#{suid}, #{ruid}, #{title}, #{content}, #{time})"
+    })
+    int insert(MessageNotification messageNotification);
 }
