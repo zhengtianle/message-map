@@ -123,3 +123,13 @@ $(function () {
     });
 
 })
+
+/**
+ * 回车->相当于点击注册
+ */
+document.onkeypress = function(e) {
+    var event = e || window.event;
+    if(event.keyCode == 13) {
+        document.getElementById("btnSubmit").click();
+    }
+}

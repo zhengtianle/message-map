@@ -7,12 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="292053c6-0b71-49d1-a463-17c31b521d0c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageNotificationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/service/MessageNotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/webroot/src/js/register.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -53,7 +50,7 @@
           <entry key="1" value="1" />
           <entry key="dummy" value="70" />
           <entry key="html" value="58" />
-          <entry key="java" value="20772" />
+          <entry key="java" value="20790" />
           <entry key="js" value="89" />
           <entry key="jsp" value="107" />
           <entry key="properties" value="429" />
@@ -63,7 +60,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="58" />
-          <entry key="JAVA" value="20772" />
+          <entry key="JAVA" value="20790" />
           <entry key="JSP" value="107" />
           <entry key="JavaScript" value="89" />
           <entry key="PLAIN_TEXT" value="71" />
@@ -76,7 +73,7 @@
           <entry key="1" value="3" />
           <entry key="class" value="15" />
           <entry key="html" value="11" />
-          <entry key="java" value="258" />
+          <entry key="java" value="260" />
           <entry key="js" value="15" />
           <entry key="jsp" value="12" />
           <entry key="log" value="1" />
@@ -88,7 +85,7 @@
         <counts>
           <entry key="CLASS" value="15" />
           <entry key="HTML" value="11" />
-          <entry key="JAVA" value="258" />
+          <entry key="JAVA" value="260" />
           <entry key="JSP" value="12" />
           <entry key="JavaScript" value="15" />
           <entry key="PLAIN_TEXT" value="4" />
@@ -109,14 +106,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+            <state relative-caret-position="80">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -201,7 +219,6 @@
         <option value="$PROJECT_DIR$/src/main/java/pojo/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/controller/MessageController.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/StarMessageService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/provider/UserSqlProvider.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/pojo/SystemNotification.java" />
@@ -213,6 +230,7 @@
         <option value="$PROJECT_DIR$/src/main/java/pojo/MessageNotification.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/mapper/MessageMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/service/MessageNotificationService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -405,7 +423,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551605543638" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551607372149" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -639,7 +657,7 @@
       <workItem from="1551249955420" duration="11398000" />
       <workItem from="1551322603220" duration="3435000" />
       <workItem from="1551534788304" duration="603000" />
-      <workItem from="1551581018358" duration="10542000" />
+      <workItem from="1551581018358" duration="11992000" />
     </task>
     <servers />
   </component>
@@ -676,13 +694,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227728000" />
+    <option name="totallyTimeSpent" value="229178000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1366" height="714" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23975721" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23975721" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -692,8 +710,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3275862" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2862069" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2784091" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.6034483" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38793105" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -959,23 +977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="61" column="40" lean-forward="true" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="58" column="62" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pojo/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -1104,11 +1105,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controller/MessageNotificationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="80">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="39" selection-end-line="50" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="40" column="46" lean-forward="true" selection-start-line="40" selection-start-column="46" selection-end-line="40" selection-end-column="46" />
         </state>
       </provider>
     </entry>

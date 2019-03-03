@@ -51,3 +51,13 @@ layui.use('layer', function () {
 
     
 });
+
+/**
+ * 回车->相当于点击登录
+ */
+document.onkeypress = function(e) {
+    var event = e || window.event;
+    if(event.keyCode == 13) {
+        document.getElementById("btnSubmit").click();
+    }
+}

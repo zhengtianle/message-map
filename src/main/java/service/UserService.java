@@ -36,7 +36,7 @@ public class UserService {
         Map<String, String> resultMap = new HashMap<>();
         User user = userMapper.getUserByTel(tel);
         //System.out.println("数据库中的password: "+user.getPassword());
-        if(user.getPassword() != null && user.getPassword().equals(password)){
+        if(user != null && user.getPassword().equals(password)){
             //登录成功
             resultMap.put("result","success");
             user.setPassword("");//不用返回密码
