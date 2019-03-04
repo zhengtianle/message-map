@@ -11,7 +11,7 @@ layui.use(['element'], function () {
         $("#basicInfo").attr("href", "personalCenter.html");
         $("#myMessage").attr("href", "myMessage.html");
         $("#safeConfig").attr("href", "safeConfig.html");
-        $("#personalCenter").attr("href", "personalCenter.html");
+        $("#personalCenter").attr("href", "news.html");
         $("#username").text(userInfo.tel);
         if (userInfo.username !== undefined) {
             $("#username").text(userInfo.username);

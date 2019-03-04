@@ -52,4 +52,17 @@ public class MessageNotificationService {
         }
         return resultMap;
     }
+
+    /**
+     * 将message_notification表中time<=readtime的read全部置为1，表示已读
+     */
+    public void readMsgNotification(String readtime) {
+        try{
+            //修改表read=1
+            messageNotificationMapper.markRead(readtime);
+        } catch (Exception e) {
+            LOG.warn("更新message_notification表中time<=" + readtime + "的read为1异常");
+            e.printStackTrace();
+        }
+    }
 }

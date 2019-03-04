@@ -11,6 +11,7 @@
     <!-- 路径规划输入框和按钮css -->
     <link type="text/css" rel="stylesheet" href="../css/routePlan.css" />
     <link type="text/css" rel="stylesheet" href="../css/infoWindow.css" />
+    <link type="text/css" rel="stylesheet" href="../css/point.css" />
     <style>
         html,body,
         .auto100{
@@ -47,13 +48,14 @@
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
                         <img id="avatar" src="../images/unlogin.png" class="layui-nav-img">
+                        <i class="point_avatar"></i>
                         <span id="username">未登录</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a id="basicInfo" href="login.html">基本资料</a></dd>
                         <dd><a id="myMessage" href="login.html">我的留言</a></dd>
                         <dd><a id="safeConfig" href="login.html">安全设置</a></dd>
-                        <dd><a id="personalCenter" href="login.html">个人中心</a></dd>
+                        <dd><a id="personalCenter" href="login.html">消息提醒<i class="point"></i></a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="#" id="loginOrExit" onclick="login()">登录</a></li>
@@ -116,6 +118,7 @@
     <!-- login() cookie-->
     <script type="text/javascript" src="../js/checkLogin.js"></script>
     <script type="text/javascript" src="../js/topMenu.js"></script>
+    <script type="text/javascript" src="../js/notification.js"></script>
 </body>
 
 

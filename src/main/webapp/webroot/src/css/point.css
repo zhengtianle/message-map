@@ -1,0 +1,44 @@
+.point{
+    display:block;
+    background: rgb(255, 94, 0);
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    top: 5px;
+    right: 3em;
+    position: absolute;
+    visibility:hidden;
+}
+.point_avatar{
+    display:block;
+    background: rgb(255, 94, 0);
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    top: 0.8em;
+    right: 0.35em;
+    position: absolute;
+    visibility:hidden;
+}
+.point_sidebar{
+    display:block;
+    background: rgb(255, 94, 0);
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    top: 0.8em;
+    right: 8em;
+    position: absolute;
+    visibility:hidden;
+}
+.point_side{
+    display:block;
+    background: rgb(255, 94, 0);
+    border-radius: 50%;
+    width: 0.5em;
+    height: 0.5em;
+    top: 0.8em;
+    right: 10em;
+    position: absolute;
+    visibility:hidden;
+}

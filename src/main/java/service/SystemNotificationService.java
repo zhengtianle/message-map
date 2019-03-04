@@ -65,4 +65,18 @@ public class SystemNotificationService {
         }
         return resultMap;
     }
+
+    /**
+     * 将用户表中的readtime置为传参#{readtime}
+     */
+    public void readSysNotification(String readtime) {
+        try{
+            User user = new User();
+            user.setReadtime(readtime);
+            userMapper.updateSelective(user);
+        } catch (Exception e) {
+            LOG.warn("更新user表中的readtime为 " + readtime +" 异常");
+            e.printStackTrace();
+        }
+    }
 }

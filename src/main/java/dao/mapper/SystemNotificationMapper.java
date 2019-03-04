@@ -17,6 +17,6 @@ public interface SystemNotificationMapper {
     /**
      * 获取从注册至今所有的系统通知
      */
-    @Select("select * from system_notification where time > #{registerTime}")
+    @Select("select * from system_notification where time > #{registerTime} order by time DESC")
     List<SystemNotification> getSysNotification(String registerTime);
 }

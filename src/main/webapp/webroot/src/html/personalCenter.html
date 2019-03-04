@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>个人中心</title>
+    <title>基本资料</title>
     <!-- layui css -->
     <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
     <link type="text/css" rel="stylesheet" href="../css/personalCenter/baseInformation.css" />
+    <link type="text/css" rel="stylesheet" href="../css/point.css" />
 
     <style>
         html,body,
@@ -43,13 +44,14 @@
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
                         <img id="avatar" src="../images/unlogin.png" class="layui-nav-img">
+                        <i class="point_avatar"></i>
                         <span id="username">某用户</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="personalCenter.html">基本资料</a></dd>
                         <dd><a href="myMessage.html">我的留言</a></dd>
                         <dd><a href="safeConfig.html">安全设置</a></dd>
-                        <dd><a href="personalCenter.html">个人中心</a></dd>
+                        <dd><a href="news.html">消息提醒<i class="point"></i></a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="#" id="loginOrExit" onclick="login()">退出</a></li>
@@ -64,10 +66,10 @@
                         <a class="" href="personalCenter.html">基本资料</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:void(0);">消息</a>
+                        <a href="javascript:void(0);">消息<i class="point_side"></i></a>
                         <dl class="layui-nav-child">
-                            <dd><a href="news.html">我的消息</a></dd>
-                            <dd><a href="notice.html">系统通知</a></dd>
+                            <dd><a href="news.html">我的消息<i class="point_sidebar" id="msg"></i></a></dd>
+                            <dd><a href="notice.html">系统通知<i class="point_sidebar" id="sys"></i></a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item"><a href="myMessage.html">我的留言</a></li>
@@ -225,6 +227,8 @@
     <script type="text/javascript" src="../js/checkLogin.js"></script>
     <!-- 基本资料 -->
     <script type="text/javascript" src="../js/personalCenter/baseInformation.js"></script>
+    <script type="text/javascript" src="../js/topMenu.js"></script>
+    <script type="text/javascript" src="../js/notification.js"></script>
     
 </body>
 

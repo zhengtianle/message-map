@@ -28,4 +28,10 @@ public class MessageNotificationController {
         Integer uid = Integer.valueOf(request.getParameter("uid"));
         return messageNotificationService.getMsgNotification(uid);
     }
+
+    @RequestMapping(value = "/readMsgNotification", method = RequestMethod.POST)
+    public void readMsgNotification(HttpServletResponse response, HttpServletRequest request) {
+        String readtime = request.getParameter("readtime");
+        messageNotificationService.readMsgNotification(readtime);
+    }
 }

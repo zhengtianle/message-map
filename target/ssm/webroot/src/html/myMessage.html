@@ -8,6 +8,7 @@
     <title>我的留言</title>
     <!-- layui css -->
     <link type="text/css" rel="stylesheet" href="../layui/css/layui.css" />
+    <link type="text/css" rel="stylesheet" href="../css/point.css" />
 
     <style>
         html,body,
@@ -42,13 +43,14 @@
                 <li class="layui-nav-item">
                     <a href="javascript:void(0);">
                         <img src="../images/unlogin.png" id="avatar" class="layui-nav-img">
+                        <i class="point_avatar"></i>
                         <span name="username" id="username">某用户</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="personalCenter.html">基本资料</a></dd>
                         <dd><a href="myMessage.html">我的留言</a></dd>
                         <dd><a href="safeConfig.html">安全设置</a></dd>
-                        <dd><a href="personalCenter.html">个人中心</a></dd>
+                        <dd><a href="news.html">消息提醒<i class="point"></i></a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="#" id="loginOrExit" onclick="login()">退出</a></li>
@@ -63,10 +65,10 @@
                         <a class="" href="personalCenter.html">基本资料</a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:void(0);">消息</a>
+                        <a href="javascript:void(0);">消息<i class="point_side"></i></a>
                         <dl class="layui-nav-child">
-                            <dd><a href="news.html">我的消息</a></dd>
-                            <dd><a href="notice.html">系统通知</a></dd>
+                            <dd><a href="news.html">我的消息<i class="point_sidebar"></i></a></dd>
+                            <dd><a href="notice.html">系统通知<i class="point_sidebar"></i></a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item layui-nav-itemed"><a href="myMessage.html">我的留言</a></li>
@@ -98,6 +100,7 @@
     <!-- login() -->
     <script type="text/javascript" src="../js/checkLogin.js"></script>
     <script type="text/javascript" src="../js/topMenu.js"></script>
+    <script type="text/javascript" src="../js/notification.js"></script>
     <script>
         //JavaScript代码区域
         layui.use(['table'], function () {

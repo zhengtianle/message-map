@@ -2,6 +2,7 @@ package dao.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import pojo.MessageNotification;
 
 import java.util.List;
@@ -18,7 +19,10 @@ public interface MessageNotificationMapper {
     /**
      * 获取当前用户收到的所有的消息提醒（不包括系统通知）,比如点赞
      */
-    @Select("select * from message_notification where ruid = #{uid}")
+    @Select({
+            "select username susername, title, content, message_notification.time, `read` from message_notification, user ",
+            "where user.uid = message_notification.suid and ruid = #{uid} order by time desc"
+    })
     List<MessageNotification> getMsgNotificationByRuid(int uid);
 
     @Insert({
@@ -26,4 +30,7 @@ public interface MessageNotificationMapper {
             "values(#{suid}, #{ruid}, #{title}, #{content}, #{time})"
     })
     int insert(MessageNotification messageNotification);
+
+    @Update("update message_notification set `read` = 1 where time <= #{readtime}")
+    void markRead(String readtime);
 }

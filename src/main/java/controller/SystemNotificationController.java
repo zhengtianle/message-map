@@ -29,4 +29,10 @@ public class SystemNotificationController {
         Integer uid = Integer.valueOf(request.getParameter("uid"));
         return systemNotificationService.getSysNotification(uid);
     }
+
+    @RequestMapping(value = "/readSysNotification", method = RequestMethod.POST)
+    public void readSysNotification(HttpServletRequest request, HttpServletResponse response) {
+        String readtime = request.getParameter("readtime");
+        systemNotificationService.readSysNotification(readtime);
+    }
 }

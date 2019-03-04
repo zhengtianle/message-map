@@ -19,6 +19,8 @@ public class MessageNotification {
 
     private int ruid;//消息接收方
 
+    private String susername;//message_notification数据库中没有这个字段 suid对应的username，连表查询
+
     private String title;
 
     private String content;
