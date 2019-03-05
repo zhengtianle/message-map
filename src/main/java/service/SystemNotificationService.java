@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pojo.SystemNotification;
 import pojo.User;
 
@@ -69,6 +70,7 @@ public class SystemNotificationService {
     /**
      * 将用户表中的readtime置为传参#{readtime}
      */
+    @Transactional
     public void readSysNotification(String readtime) {
         try{
             User user = new User();

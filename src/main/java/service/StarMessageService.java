@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pojo.Message;
 import pojo.MessageNotification;
 import pojo.StarMessage;
@@ -36,6 +37,7 @@ public class StarMessageService {
     @Autowired
     private MessageNotificationMapper messageNotificationMapper;
 
+    @Transactional
     public Map<String, String> starAMessage(int uid, int mid) {
         Map<String, String> resultMap = new HashMap<>();
         StarMessage starMessage = new StarMessage();
@@ -92,7 +94,7 @@ public class StarMessageService {
         starMessage.setSfid(uid);
         List<StarMessage> midList = starMessageMapper.getStaredSelective(starMessage);
         List<Integer> list = new ArrayList<>();
-        midList.forEach(sm -> {list.add(sm.getMid());});
+        midList.forEach(sm -> list.add(sm.getMid()));
         return list;
     }
 }

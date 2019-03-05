@@ -22,6 +22,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -42,6 +43,7 @@ import java.util.Properties;
 @Configuration                                      //声明配置类
 @ComponentScan({"dao", "service"})                  //扫描dao、service包
 @PropertySource("classpath:db.properties")          //加载db.properties文件
+@EnableTransactionManagement                        //开启基于注解的事务管理
 //配置Mybatis扫包范围，从而为我们创建dao层的实现
 @MapperScan(basePackages = "dao.mapper", sqlSessionFactoryRef = "sqlSessionFactory")
 public class RootConfig {

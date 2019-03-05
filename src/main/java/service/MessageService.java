@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pojo.Message;
 import pojo.UserAndMessage;
 import pojo.UserMessageStar;
@@ -34,6 +35,7 @@ public class MessageService {
     @Autowired
     private StarMessageService starMessageService;
 
+    @Transactional
     public String leaveAMessage(Message message){
         int affectedRows = 0;
         Gson gson = new Gson();

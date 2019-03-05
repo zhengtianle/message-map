@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import pojo.User;
 import utils.UploadUtil;
@@ -48,6 +49,7 @@ public class UserService {
         return gson.toJson(resultMap);
     }
 
+    @Transactional
     public String register(String tel, String pin, String password){
         //TODO: pin验证码作为后续功能手机验证（接入第三方接口实现）
         User user = new User();
@@ -79,6 +81,7 @@ public class UserService {
     /**
      * 修改基本信息和我的山威信息
      */
+    @Transactional
     public String updateUserInfo(User user){
         int affectedRows=0;
         Gson gson = new Gson();
@@ -106,6 +109,7 @@ public class UserService {
     /**
      * 保存头像并修改头像
      */
+    @Transactional
     public String updateAvatar(MultipartFile file, String path, Integer uid){
         Gson gson = new Gson();
         Map<String, Object> map = new HashMap<>();
@@ -139,6 +143,7 @@ public class UserService {
     /**
      * 修改密码
      */
+    @Transactional
     public String modifyPassword(Integer uid, String oldPassword, String newPassword) {
         Gson gson = new Gson();
         Map<String, String> resultMap = new HashMap<>();

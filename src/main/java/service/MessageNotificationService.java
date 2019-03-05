@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pojo.Message;
+import org.springframework.transaction.annotation.Transactional;
 import pojo.MessageNotification;
 
 import java.util.HashMap;
@@ -56,6 +56,7 @@ public class MessageNotificationService {
     /**
      * 将message_notification表中time<=readtime的read全部置为1，表示已读
      */
+    @Transactional
     public void readMsgNotification(String readtime) {
         try{
             //修改表read=1
