@@ -31,6 +31,6 @@ public interface MessageNotificationMapper {
     })
     int insert(MessageNotification messageNotification);
 
-    @Update("update message_notification set `read` = 1 where time <= #{readtime}")
-    void markRead(String readtime);
+    @Update("update message_notification set `read` = 1 where ruid = #{ruid} and time <= #{time}")
+    void markRead(MessageNotification messageNotification);
 }

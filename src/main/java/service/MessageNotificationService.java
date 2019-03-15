@@ -57,12 +57,12 @@ public class MessageNotificationService {
      * 将message_notification表中time<=readtime的read全部置为1，表示已读
      */
     @Transactional
-    public void readMsgNotification(String readtime) {
+    public void readMsgNotification(MessageNotification messageNotification) {
         try{
             //修改表read=1
-            messageNotificationMapper.markRead(readtime);
+            messageNotificationMapper.markRead(messageNotification);
         } catch (Exception e) {
-            LOG.warn("更新message_notification表中time<=" + readtime + "的read为1异常");
+            LOG.warn("更新message_notification表中ruid为" + messageNotification.getRuid() + "的time<=" + messageNotification.getTime() + "的read为1异常");
             e.printStackTrace();
         }
     }

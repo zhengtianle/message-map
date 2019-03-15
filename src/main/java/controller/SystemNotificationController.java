@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import pojo.User;
 import service.SystemNotificationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,6 +34,10 @@ public class SystemNotificationController {
     @RequestMapping(value = "/readSysNotification", method = RequestMethod.POST)
     public void readSysNotification(HttpServletRequest request, HttpServletResponse response) {
         String readtime = request.getParameter("readtime");
-        systemNotificationService.readSysNotification(readtime);
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        User user = new User();
+        user.setReadtime(readtime);
+        user.setUid(uid);
+        systemNotificationService.readSysNotification(user);
     }
 }

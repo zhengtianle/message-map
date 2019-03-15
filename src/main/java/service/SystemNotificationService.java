@@ -71,13 +71,11 @@ public class SystemNotificationService {
      * 将用户表中的readtime置为传参#{readtime}
      */
     @Transactional
-    public void readSysNotification(String readtime) {
+    public void readSysNotification(User user) {
         try{
-            User user = new User();
-            user.setReadtime(readtime);
             userMapper.updateSelective(user);
         } catch (Exception e) {
-            LOG.warn("更新user表中的readtime为 " + readtime +" 异常");
+            LOG.warn("更新user表中用户id为" + user.getUid() + "的readtime为 " + user.getReadtime() +" 异常");
             e.printStackTrace();
         }
     }

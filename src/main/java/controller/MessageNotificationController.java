@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import pojo.MessageNotification;
 import service.MessageNotificationService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,10 @@ public class MessageNotificationController {
     @RequestMapping(value = "/readMsgNotification", method = RequestMethod.POST)
     public void readMsgNotification(HttpServletResponse response, HttpServletRequest request) {
         String readtime = request.getParameter("readtime");
-        messageNotificationService.readMsgNotification(readtime);
+        Integer uid = Integer.valueOf(request.getParameter("uid"));
+        MessageNotification messageNotification = new MessageNotification();
+        messageNotification.setTime(readtime);
+        messageNotification.setRuid(uid);
+        messageNotificationService.readMsgNotification(messageNotification);
     }
 }
