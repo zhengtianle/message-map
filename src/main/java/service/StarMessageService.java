@@ -3,16 +3,17 @@ package service;
 import dao.mapper.MessageMapper;
 import dao.mapper.MessageNotificationMapper;
 import dao.mapper.StarMessageMapper;
-import dao.provider.StarMessageSqlProvider;
-import notice.StarNotice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.socket.TextMessage;
 import pojo.Message;
 import pojo.MessageNotification;
 import pojo.StarMessage;
+import websocket.MyWebSocketHandler;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -37,6 +38,11 @@ public class StarMessageService {
     @Autowired
     private MessageNotificationMapper messageNotificationMapper;
 
+    @Bean
+    public MyWebSocketHandler getHandler() {
+        return new MyWebSocketHandler();
+    }
+
     @Transactional
     public Map<String, String> starAMessage(int uid, int mid) {
         Map<String, String> resultMap = new HashMap<>();
@@ -51,6 +57,10 @@ public class StarMessageService {
 
             //获取留言者id
             int toUid = messageMapper.getUidByMid(mid);
+
+            //通知有新消息
+            //这里只是消息提醒，消息的显示由ajax查询,所以这里传递的消息不重要
+            getHandler().sendMessageToUser(toUid, new TextMessage("新的消息"));
 
             //插入starMessage记录
             starMessage.setMid(mid);

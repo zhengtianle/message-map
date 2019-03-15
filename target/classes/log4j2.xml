@@ -8,7 +8,8 @@ https://github.com/alibaba/druid/wiki/Druid%E4%B8%AD%E4%BD%BF%E7%94%A8log4j2%E8%
         <!-- 输出到控制台 -->
         <Console name="Console" target="SYSTEM_OUT">
             <!-- 需要记录的级别 -->
-             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+            <ThresholdFilter level="DEBUG"/>
+            <!--<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />-->
             <PatternLayout pattern="[%d{HH:mm:ss.SSS}] %-5level %class{36} %L %M - %msg%xEx%n"/>
         </Console>
 

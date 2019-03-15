@@ -26,7 +26,7 @@ import java.io.IOException;
  */
 @Configuration
 @EnableWebMvc                           //启用 Spring MVC
-@ComponentScan("controller")            //扫描controller包
+@ComponentScan({"controller", "websocket"})            //扫描controller包
 public class WebConfig extends WebMvcConfigurerAdapter {
     private static final Logger LOG = LoggerFactory.getLogger(WebConfig.class);
 

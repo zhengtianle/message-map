@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.socket.TextMessage;
+import org.springframework.web.socket.WebSocketHandler;
 import service.MessageService;
 import service.StarMessageService;
+import websocket.MyWebSocketHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +32,6 @@ public class StarMessageController {
     public Map<String, String> starAMessage(HttpServletRequest request, HttpServletResponse response) {
         Integer uid = Integer.valueOf(request.getParameter("uid"));
         Integer mid = Integer.valueOf(request.getParameter("mid"));
-
 
         return starMessageService.starAMessage(uid, mid);
     }
